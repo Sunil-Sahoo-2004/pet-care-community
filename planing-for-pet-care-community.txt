@@ -1,0 +1,186 @@
+=======================================================================      PET CARE COMMUNITY      ==========================================================================
+
+STRUCTURE : 
+
+pet-care-community/
+│── backend/  
+│   ├── controllers/  
+│   ├── models/  
+│   ├── routes/  
+│   ├── middleware/  
+│   ├── config/  
+│   ├── services/  
+│   ├── utils/  
+│   ├── index.js  
+│   ├── server.js  
+│  
+│── frontend/  
+│   ├── src/  
+│   │   ├── components/  
+│   │   ├── pages/  
+│   │   ├── assets/  
+│   │   ├── hooks/  
+│   │   ├── context/  
+│   │   ├── utils/  
+│   │   ├── App.js  
+│   │   ├── index.js  
+│   ├── public/  
+│   ├── package.json  
+│  
+│── database/  
+│   ├── schema.sql  
+│   ├── seed.js  
+│   ├── connection.js  
+│  
+│── docs/  
+│   ├── API_Documentation.md  
+│   ├── README.md  
+│  
+│── tests/  
+│   ├── backend/  
+│   ├── frontend/  
+│  
+│── .env  
+│── .gitignore  
+│── package.json  
+│── README.md  
+
+
+
+
+
+1. express :
+    Purpose: A minimalist web framework for Node.js.
+    Use: To build REST APIs and handle routing.
+
+    Example:
+    const express = require('express');
+    const app = express();
+    app.get('/', (req, res) => res.send('Hello World'));
+
+
+
+2. mongoose : 
+    Purpose: MongoDB ODM (Object Data Modeling).
+    Use: To connect to MongoDB and define schemas/models for your collections.
+
+    Example:
+    const mongoose = require('mongoose');
+    mongoose.connect('mongodb://localhost:27017/mydb');
+
+
+
+3. jsonwebtoken : 
+    Purpose: For authentication using JWT (JSON Web Tokens).
+    Use: To securely transmit user data and verify login sessions.
+
+    Example:
+    const jwt = require('jsonwebtoken');
+    const token = jwt.sign({ userId: 123 }, 'secretKey');
+
+
+
+4. bcrypt : 
+    Purpose: For hashing passwords.
+    Use: To encrypt user passwords before storing in the database.
+
+    Example:
+    const bcrypt = require('bcrypt');
+    const hash = await bcrypt.hash('password123', 10);
+
+
+
+5. CORS (Cross-Origin Resource Sharing):
+    Purpose: Allows your frontend (like React or HTML site) to talk to a backend (like Node.js) that's on a different domain or port.
+    Use: Without it, the browser will block your request for security reasons.
+    
+    Example:
+    You're running frontend on http://localhost:5173
+    Backend is on http://localhost:5000
+    Without CORS, you’ll get an error like:
+    Access to fetch at 'http://localhost:4000' from origin 'http://localhost:5173' has been blocked by CORS policy.
+    So, in your Node.js backend, you fix it like this:
+    const cors = require('cors');
+    app.use(cors()); // This allows all origins
+
+
+
+6. dotenv : 
+    Purpose: To manage environment variables in a .env file.
+    Use: To hide sensitive info like DB passwords or API keys.
+
+    Example:
+    require('dotenv').config();
+    const dbUrl = process.env.DB_URL;
+
+
+
+7. body-parser : 
+    Purpose: Middleware to parse incoming request bodies.
+    Use: To extract form or JSON data from requests.
+
+    Example:
+    const bodyParser = require('body-parser');
+    app.use(bodyParser.json());
+    Note: body-parser is now built into Express as express.json() and express.urlencoded().
+
+
+
+8. multer : 
+    Purpose: Middleware for handling multipart/form-data, used for file uploads.
+    Use: To upload images, PDFs, etc., to your server.
+
+    Example:
+    const multer = require('multer');
+    const upload = multer({ dest: 'uploads/' });
+    app.post('/upload', upload.single('file'), (req, res) => res.send('File uploaded'));
+
+
+
+9. stripe : 
+    Purpose: Integration with Stripe API.
+    Use: To handle payments and subscriptions in your app.
+
+    Example:
+    const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+    const paymentIntent = await stripe.paymentIntents.create({ amount: 1000, currency: 'usd' });
+
+
+
+10. validator : 
+    Purpose: For validating and sanitizing strings (e.g., emails, URLs).
+    Use: To check form input validity before saving to DB.
+
+    Example:
+    const validator = require('validator');
+    console.log(validator.isEmail('test@gmail.com')); // true
+
+
+
+11. nodemon (dev dependency) : 
+    Purpose: Dev tool that auto-restarts the server when code changes.
+    Use: Makes development faster by removing need to manually restart.
+
+    Run with:
+    npx nodemon server.js
+
+
+
+
+
+
+FRONTEND : 
+
+npm create vite@latest
+cd .....
+npm install
+npm install react-router-dom
+npm run dev
+
+
+BACKEND : 
+
+npm init
+entry point: (index.js) server.js
+npm install express mongoose jsonwebtoken bcrypt cros dotenv body-parser multer stripe validator nodemon
+
