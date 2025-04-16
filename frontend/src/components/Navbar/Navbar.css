@@ -1,0 +1,88 @@
+.navbar {
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    width: 110px;
+}
+
+.navbar .search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border: 1px solid #49557e;
+    width: 30vw;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.navbar .search-bar img {
+    width: 25px;
+}
+
+.navbar .search-bar input {
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    color: #49557e;
+    font-size: 18px;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.navbar-cart-icon img {
+    width: 25px;
+}
+
+.navbar button {
+    background: transparent;
+    font-size: 16px;
+    color: #49557e;
+    border: 1px solid green;
+    padding: 10px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.navbar button:hover {
+    background-color: #fff4f2;
+}
+
+.navbar .active {
+    padding-bottom: 2px;
+    border-bottom: 2px solid #49557e;
+}
+
+.navbar li {
+    cursor: pointer;
+}
+
+.navbar-cart-icon {
+    position: relative;
+}
+
+.navbar-cart-icon .dot {
+    position: absolute;
+    min-width: 10px;
+    min-height: 10px;
+    background-color: green;
+    border-radius: 5px;
+    top: -8px;
+    right: -8px;
+}
