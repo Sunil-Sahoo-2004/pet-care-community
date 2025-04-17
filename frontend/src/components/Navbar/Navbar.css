@@ -21,7 +21,7 @@
 }
 
 .navbar .search-bar img {
-    width: 25px;
+    width: 22px;
 }
 
 .navbar .search-bar input {
@@ -61,7 +61,7 @@
 }
 
 .navbar button:hover {
-    background-color: #fff4f2;
+    background-color: #f2fff6;
 }
 
 .navbar .active {
@@ -75,6 +75,7 @@
 
 .navbar-cart-icon {
     position: relative;
+    cursor: pointer;
 }
 
 .navbar-cart-icon .dot {
@@ -86,3 +87,7 @@
     top: -8px;
     right: -8px;
 }
+
+
+
+  

@@ -6,28 +6,27 @@ const Navbar = () => {
   const [menu, setMenu] = useState("home");
   return (
     <div className='navbar'>
-      <img src={assets.logo} alt="This is the logo of our website that is the indetion of our website" className='logo' />
+        <img src={assets.logo} alt="This is the logo of our website that is the indetion of our website" className='logo' />
 
-      <div className="search-bar">
-        <img src={assets.search} alt="This is the search icon" />
-        <input type="text" placeholder='Search for a pet...' id='searchInput' />
-      </div>
+        <div className="search-bar">
+          <img src={assets.search} alt="This is the search icon" />
+          <input type="text" placeholder='Search for a pet...' id='searchInput' />
+        </div>
 
-      <ul className="navbar-menu">
-        <li onClick={()=>setMenu("home")} className={menu==="home"?"active":""}>home</li>
-        <li onClick={()=>setMenu("services")} className={menu==="services"?"active":""}>services</li>
-        <li onClick={()=>setMenu("contact-us")} className={menu==="contact-us"?"active":""}>contact us</li>
-      </ul>
+        <ul className="navbar-menu">
+          <li onClick={()=>setMenu("home")} className={menu==="home"?"active":""}>home</li>
+          <li onClick={()=>setMenu("services")} className={menu==="services"?"active":""}>services</li>
+          <li onClick={()=>setMenu("contact-us")} className={menu==="contact-us"?"active":""}>contact us</li>
+        </ul>
 
-      <div className="navbar-right">
-        <button>sign in</button>
-        <div className="navbar-cart-icon">
-          <img src={assets.cart} alt="This is the Cart that stored the marked item" />
-          <div className="dot"></div>
+        <div className="navbar-right">
+          <button>sign in</button>
+          <div className="navbar-cart-icon">
+            <img src={assets.cart} alt="This is the Cart that stored the marked item" />
+            <div className="dot"></div>
+          </div>
         </div>
       </div>
-
-    </div>
   )
 }
 
