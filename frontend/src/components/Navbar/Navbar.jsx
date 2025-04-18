@@ -20,11 +20,11 @@ const Navbar = () => {
         </ul>
 
         <div className="navbar-right">
-          <button>sign in</button>
           <div className="navbar-cart-icon">
             <img src={assets.cart} alt="This is the Cart that stored the marked item" />
             <div className="dot"></div>
           </div>
+          <button>sign in</button>
         </div>
       </div>
   )

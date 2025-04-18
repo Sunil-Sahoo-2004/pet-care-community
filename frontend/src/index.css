@@ -20,7 +20,6 @@ a {
 }
 
 .app {
-  max-width: 1380px;
-  width: 100%;
+  width: 80%;
   margin: auto;
 }

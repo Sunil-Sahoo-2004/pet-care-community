@@ -89,5 +89,28 @@
 }
 
 
+/* Responsive */
+@media (max-width:1050px) {
+    .navbar .logo {
+        width: 90px;
+    }
 
-  
+    .navbar-menu {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .navbar .logo {
+        width: 80px;
+    }
+
+    .navbar .search-bar {
+        display: none;
+    }
+    .navbar button {
+        font-size: 12px;
+        padding: 10px 10px;
+        width: 20vw;
+    }
+}
