@@ -3,6 +3,7 @@ import cart from './cart.png'
 import search from './search.png'
 import illustration from './illustration.png'
 import menu from './menu.png'
+import cross from './cross_icon.png'
 
 
 export const assets = {
@@ -10,5 +11,6 @@ export const assets = {
     cart,
     search,
     illustration,
-    menu
+    menu,
+    cross
 }

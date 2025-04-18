@@ -1,0 +1,127 @@
+.login-popup {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: #00000090;
+    display: grid;
+    grid-template-rows: 2;
+    grid-template-columns: 1;
+}
+
+.login-popup-container {
+    place-self: center;
+    width: max(53vw, 330px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #d7f3e3, #a0d9b4);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.login-popup-container .popup-left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.top-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-left .top-logo img {
+    width: 100px;
+}
+
+.popup-left h2 {
+    text-align: center;
+}
+
+.popup-left p,h4{
+    text-align: center;
+}
+
+.popup-left .features {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-left .features .feature-box {
+    max-width: 12vw;
+    min-height: 15vh;
+    width: 100%;
+    background: linear-gradient(135deg, #ff867c, #ffb199);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.login-popup-container .popup-right {
+    width: max(23vw, 330px);
+    color: #808080;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 25px 30px;
+}
+
+.login-popup-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+}
+
+.login-popup-title img {
+    width: 16px;
+    cursor: pointer;
+}
+
+.login-popup-inputes {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-popup-inputes input {
+    outline: none;
+    border: 1px solid #c9c9c9;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.login-popup-container button {
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    color: white;
+    background-color: tomato;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.login-popup-condition {
+    display: flex;
+    align-items: start;
+    gap: 8px;
+    margin-top: -15px;
+}
+
+.login-popup-condition input {
+    margin-top: 5px;
+}
+
+.login-popup p span {
+    color: tomato;
+    font-weight: 500;
+    cursor: pointer;
+}
+.login-popup .pop {
+    text-align: center;
+}
