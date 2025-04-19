@@ -12,7 +12,7 @@ const LoginPopup = ({setShowLogin}) => {
           <div className="top-logo">
             <img src={assets.logo} alt="This is the logo icon" />
           </div>
-          <h2>Welcome to<br /><strong>HEADS UP FOR TAILS!</strong></h2>
+          <h2>Welcome to<br /><strong>PET CARE COMMUNITY!</strong></h2>
           <p>Register to avail the best deals!</p>
 
           <div className='features'>
@@ -34,7 +34,7 @@ const LoginPopup = ({setShowLogin}) => {
         <div className='popup-right'>
           <div className="login-popup-title">
             <h2>{currState}</h2>
-            <img onClick={() => setShowLogin(false)} src={assets.cross} alt="This is the cross icon for come back to main page" />
+            
           </div>
 
           <div className="login-popup-inputes">
@@ -55,6 +55,7 @@ const LoginPopup = ({setShowLogin}) => {
         </div>
         
       </form>
+      <img onClick={() => setShowLogin(false)} src={assets.cross} alt="This is the cross icon for come back to main page" className='cross' />
       
     </div>
   )

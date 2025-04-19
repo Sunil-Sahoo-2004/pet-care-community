@@ -1,127 +1,238 @@
+/* Base styles */
 .login-popup {
-    position: absolute;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
     background-color: #00000090;
-    display: grid;
-    grid-template-rows: 2;
-    grid-template-columns: 1;
-}
-
-.login-popup-container {
-    place-self: center;
-    width: max(53vw, 330px);
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .login-popup .cross {
+    width: 24px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(255, 194, 194, 0.86);
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .login-popup-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 1000px;
+    width: 90%;
     background: linear-gradient(135deg, #d7f3e3, #a0d9b4);
-    padding: 10px;
-    border-radius: 10px;
-}
-
-.login-popup-container .popup-left {
+    border-radius: 12px;
+    /* overflow: hidden; */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .popup-left,
+  .popup-right {
+    flex: 1;
+    padding: 25px;
+    box-sizing: border-box;
+  }
+  
+  .popup-left {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 20px;
-}
-
-.top-logo {
+  }
+  
+  .top-logo {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.popup-left .top-logo img {
+  }
+  
+  .top-logo img {
     width: 100px;
-}
-
-.popup-left h2 {
+  }
+  
+  .popup-left h2 {
     text-align: center;
-}
+  }
 
-.popup-left p,h4{
+  .popup-left h2 strong {
+    font-weight: 600;
+  }
+  
+  .popup-left p,
+  .popup-left h4 {
     text-align: center;
-}
-
-.popup-left .features {
-    display: flex;
-    gap: 4px;
-    justify-content: center;
-    align-items: center;
-}
-
-.popup-left .features .feature-box {
-    max-width: 12vw;
-    min-height: 15vh;
-    width: 100%;
-    background: linear-gradient(135deg, #ff867c, #ffb199);
-    padding: 10px;
-    border-radius: 10px;
-}
-
-.login-popup-container .popup-right {
-    width: max(23vw, 330px);
-    color: #808080;
-    background-color: white;
+  }
+  
+  .popup-left .features {
     display: flex;
     flex-direction: column;
-    gap: 25px;
-    padding: 25px 30px;
-}
-
-.login-popup-title {
+    gap: 12px;
+  }
+  
+  .feature-box {
+    background: linear-gradient(135deg, #ff867c, #ffb199);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .popup-right {
+    background-color: white;
+    color: #808080;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .login-popup-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: black;
-}
-
-.login-popup-title img {
-    width: 16px;
-    cursor: pointer;
-}
-
-.login-popup-inputes {
+  }
+  
+  .login-popup-inputes {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-}
-
-.login-popup-inputes input {
-    outline: none;
+    gap: 15px;
+  }
+  
+  .login-popup-inputes input {
+    padding: 10px;
     border: 1px solid #c9c9c9;
-    padding: 10px;
     border-radius: 4px;
-}
-
-.login-popup-container button {
-    border: none;
+    outline: none;
+  }
+  
+  .login-popup-container button {
     padding: 10px;
-    border-radius: 4px;
-    color: white;
     background-color: tomato;
+    color: white;
     font-size: 15px;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-}
-
-.login-popup-condition {
+  }
+  
+  .login-popup-condition {
     display: flex;
-    align-items: start;
-    gap: 8px;
-    margin-top: -15px;
-}
-
-.login-popup-condition input {
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+  }
+  
+  .login-popup-condition input {
     margin-top: 5px;
-}
-
-.login-popup p span {
+  }
+  
+  .login-popup p span {
     color: tomato;
     font-weight: 500;
     cursor: pointer;
-}
-.login-popup .pop {
+  }
+  
+  .pop {
     text-align: center;
-}
+  }
+  
+  /* ------------------ RESPONSIVE BREAKPOINTS ------------------ */
+  
+  /* Tablets and below */
+  @media (max-width: 992px) {
+    .login-popup-container {
+      flex-direction: column;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+  
+    .popup-left,
+    .popup-right {
+      width: 100%;
+      padding: 20px;
+    }
+  
+    .popup-left .features {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+  
+    .feature-box {
+      width: 48%;
+      min-width: 140px;
+    }
+  }
+  
+  /* Small tablets and mobile */
+  @media (max-width: 600px) {
+    .feature-box {
+      width: 100%;
+    }
+  
+    .top-logo img {
+      width: 80px;
+    }
+  
+    .popup-left h2 {
+      font-size: 1.4rem;
+    }
+  
+    .popup-left p,
+    .popup-left h4 {
+      font-size: 0.95rem;
+    }
+  
+    .login-popup-container button {
+      font-size: 14px;
+    }
+  
+    .login-popup-inputes input {
+      font-size: 14px;
+    }
+  
+    .login-popup-title h2 {
+      font-size: 1.2rem;
+    }
+  
+    .login-popup-condition {
+      font-size: 12px;
+    }
+  
+    .login-popup .cross {
+      top: 4px;
+      right: 5px;
+    }
+  }
+  
+  /* Small mobile */
+  @media (max-width: 400px) {
+    .popup-left h2 {
+      font-size: 1.2rem;
+    }
+  
+    .login-popup-title h2 {
+      font-size: 1rem;
+    }
+  
+    .popup-left,
+    .popup-right {
+      padding: 15px;
+    }
+  
+    .login-popup-inputes input {
+      padding: 8px;
+    }
+  
+    .login-popup-container {
+      border-radius: 8px;
+    }
+  }
+  
