@@ -1,5 +1,5 @@
 .navbar {
-    padding: 20px 0;
+    padding: 20px 0 0 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -15,7 +15,7 @@
     justify-content: center;
     gap: 5px;
     border: 1px solid #49557e;
-    width: 30vw;
+    width: 25vw;
     padding: 10px;
     border-radius: 10px;
 }
@@ -66,7 +66,7 @@
 
 .navbar .active {
     padding-bottom: 2px;
-    border-bottom: 2px solid #49557e;
+    border-bottom: 2px solid #497e55;
 }
 
 .navbar li {
@@ -90,13 +90,22 @@
 
 
 /* Responsive */
-@media (max-width:1050px) {
+@media screen and (max-width: 1220px) {
+    .navbar .search-bar {
+        width: 20vw;
+    }
+}
+@media screen and (max-width:1050px) {
     .navbar .logo {
         width: 90px;
     }
 
     .navbar-menu {
         display: none;
+    }
+
+    .navbar .search-bar {
+        width: 30vw;
     }
 }
 

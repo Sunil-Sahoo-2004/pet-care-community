@@ -184,3 +184,14 @@ npm init
 entry point: (index.js) server.js
 npm install express mongoose jsonwebtoken bcrypt cros dotenv body-parser multer stripe validator nodemon
 
+
+
+
+
+Build Admin
+
+npm create vite@latest .
+React
+Javascript
+npm install
+npm run dev
