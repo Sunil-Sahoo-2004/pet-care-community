@@ -4,6 +4,7 @@ import search from './search.png'
 import illustration from './illustration.png'
 import menu from './menu.png'
 import cross from './cross_icon.png'
+import rating_stars from './rating_stars.png'
 
 
 import menu_1 from './Menu_1.png'
@@ -49,7 +50,8 @@ export const assets = {
     search,
     illustration,
     menu,
-    cross
+    cross,
+    rating_stars
 }
 
 export const menu_list = [
@@ -87,207 +89,226 @@ export const menu_list = [
 export const pet_list = [
     {
         _id: "1",
-        name: "",
+        name: "Buddy",
         image: pet_1,
         price: 12,
-        description: "",
+        description: "A playful and loyal golden retriever pup who loves belly rubs.",
         category: "Dog"
     },
     {
         _id: "2",
-        name: "",
+        name: "Max",
         image: pet_2,
         price: 18,
-        description: "",
+        description: "Energetic and smart, Max is ready for long walks and games.",
         category: "Dog"
-    }, {
+    },
+    {
         _id: "3",
-        name: "",
+        name: "Rocky",
         image: pet_3,
         price: 16,
-        description: "",
+        description: "A brave little pug with a big heart and an even bigger personality.",
         category: "Dog"
-    }, {
+    },
+    {
         _id: "4",
-        name: "",
+        name: "Bella",
         image: pet_4,
         price: 24,
-        description: "",
+        description: "Sweet and affectionate, Bella is a cuddle expert.",
         category: "Dog"
-    }, {
+    },
+    {
         _id: "5",
-        name: "",
+        name: "Luna",
         image: pet_5,
         price: 24,
-        description: "",
+        description: "Elegant and curious, Luna loves sunny windowsills and soft purring.",
         category: "Cat"
-    }, {
+    },
+    {
         _id: "6",
-        name: "",
+        name: "Milo",
         image: pet_6,
         price: 24,
-        description: "",
+        description: "A mischievous furball who enjoys toys and treats.",
         category: "Cat"
-    }, {
+    },
+    {
         _id: "7",
-        name: "",
+        name: "Whiskers",
         image: pet_7,
         price: 24,
-        description: "",
+        description: "Smart and sleek, Whiskers is a master napper and midnight runner.",
         category: "Cat"
-    }, {
+    },
+    {
         _id: "8",
-        name: "",
+        name: "Shadow",
         image: pet_8,
         price: 24,
-        description: "",
+        description: "A quiet and mysterious companion who loves to be near you.",
         category: "Cat"
-    }, {
+    },
+    {
         _id: "9",
-        name: "",
+        name: "Kiwi",
         image: pet_9,
         price: 24,
-        description: "",
+        description: "A chirpy little parakeet with a love for melodies.",
         category: "Birds"
-    }, {
+    },
+    {
         _id: "10",
-        name: "",
+        name: "Sunny",
         image: pet_10,
         price: 24,
-        description: "",
+        description: "Bright and lively, Sunny is a joy to watch and hear.",
         category: "Birds"
-    }, {
+    },
+    {
         _id: "11",
-        name: "",
+        name: "Peep",
         image: pet_11,
         price: 24,
-        description: "",
+        description: "Tiny and sweet, Peep loves to perch on your finger.",
         category: "Birds"
-    }, {
+    },
+    {
         _id: "12",
-        name: "",
+        name: "Coco",
         image: pet_12,
         price: 24,
-        description: "",
+        description: "Coco is a colorful bird with a flair for attention.",
         category: "Birds"
-    }, {
+    },
+    {
         _id: "13",
-        name: "",
+        name: "Bubbles",
         image: pet_13,
         price: 24,
-        description: "",
+        description: "A peaceful and pretty goldfish who swims gracefully.",
         category: "Fish"
-    }, {
+    },
+    {
         _id: "14",
-        name: "",
+        name: "Finley",
         image: pet_14,
         price: 24,
-        description: "",
+        description: "Bright scales and calm vibes make Finley a great tank buddy.",
         category: "Fish"
-    }, {
+    },
+    {
         _id: "15",
-        name: "",
+        name: "Coral",
         image: pet_15,
         price: 24,
-        description: "",
+        description: "Vibrant and lively, Coral brings color to any aquarium.",
         category: "Fish"
-    }, {
+    },
+    {
         _id: "16",
-        name: "",
+        name: "Splash",
         image: pet_16,
         price: 24,
-        description: "",
+        description: "Always on the move, Splash is fun to watch.",
         category: "Fish"
-    }, {
+    },
+    {
         _id: "17",
-        name: "",
+        name: "Snowball",
         image: pet_17,
         price: 24,
-        description: "",
+        description: "Fluffy and gentle, Snowball is a calm and cuddly rabbit.",
         category: "Rabbit"
-    }, {
+    },
+    {
         _id: "18",
-        name: "",
+        name: "Thumper",
         image: pet_18,
         price: 24,
-        description: "",
+        description: "An adventurous bunny who loves hopping around.",
         category: "Rabbit"
-    }, {
-        _id: "18",
-        name: "",
-        image: pet_18,
-        price: 24,
-        description: "",
-        category: "Rabbit"
-    }, {
+    },
+    {
         _id: "19",
-        name: "",
+        name: "Daisy",
         image: pet_19,
         price: 24,
-        description: "",
+        description: "A sweet and soft rabbit that loves carrots and snuggles.",
         category: "Rabbit"
-    }, {
+    },
+    {
         _id: "20",
-        name: "",
+        name: "Cocoa",
         image: pet_20,
         price: 24,
-        description: "",
+        description: "Brown and bouncy, Cocoa is full of energy.",
         category: "Rabbit"
-    }, {
+    },
+    {
         _id: "21",
-        name: "",
+        name: "Nibbles",
         image: pet_21,
         price: 24,
-        description: "",
+        description: "Tiny but fearless, Nibbles is a curious little explorer.",
         category: "Hamsters"
-    }, {
+    },
+    {
         _id: "22",
-        name: "",
+        name: "Gizmo",
         image: pet_22,
         price: 24,
-        description: "",
+        description: "Always on the move, Gizmo is full of fun energy.",
         category: "Hamsters"
-    }, {
+    },
+    {
         _id: "23",
-        name: "",
+        name: "Hazel",
         image: pet_23,
         price: 24,
-        description: "",
+        description: "A sweet and sleepy hamster who loves to burrow.",
         category: "Hamsters"
-    }, {
+    },
+    {
         _id: "24",
-        name: "",
+        name: "Peanut",
         image: pet_24,
         price: 24,
-        description: "",
+        description: "Cute, chubby-cheeked, and always looking for snacks.",
         category: "Hamsters"
-    }, {
+    },
+    {
         _id: "25",
-        name: "",
+        name: "Shelly",
         image: pet_25,
         price: 24,
-        description: "",
+        description: "A calm turtle who loves basking in the warmth.",
         category: "Turtles"
-    }, {
+    },
+    {
         _id: "26",
-        name: "",
+        name: "Speedy",
         image: pet_26,
         price: 24,
-        description: "",
+        description: "Slow but steady, Speedy is always curious.",
         category: "Turtles"
-    }, {
+    },
+    {
         _id: "27",
-        name: "",
+        name: "Tiny",
         image: pet_27,
         price: 24,
-        description: "",
+        description: "Small but full of charm, Tiny is easy to care for.",
         category: "Turtles"
-    }, {
+    },
+    {
         _id: "28",
-        name: "",
+        name: "Crush",
         image: pet_28,
         price: 24,
-        description: "",
+        description: "Cool and laid-back, Crush is perfect for relaxed vibes.",
         category: "Turtles"
     }
-]
+];
