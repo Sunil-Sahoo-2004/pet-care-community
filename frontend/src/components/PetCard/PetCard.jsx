@@ -1,13 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './PetCard.css'
 import { assets } from '../../assets/assets'
+import { StoreContext } from '../../context/StoreContext';
 
-// eslint-disable-next-line no-unused-vars
+
 const PetCard = ({id, name, price, description, image}) => {
+  const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
   return (
     <div className='pet-card'>
         <div className="pet-cart-img-container">
-            <img className='pet-card-image' src={image} alt="" />
+            <img className='pet-card-image' src={image} alt="pet_image" />
+            {!cartItems[id]
+              ?<img className='add' onClick={()=>addToCart(id)} src={assets.add_icon_white} alt='add_icon' />
+              :<div className='card-item-counter'>
+                <img onClick={()=>removeFromCart(id)} src={assets.remove_icon_red} alt="remove_icon" />
+                <p>{cartItems[id]}</p>
+                <img onClick={()=>addToCart(id)} src={assets.add_icon_green} alt="add_icon" />
+               </div>
+            }
         </div>
         <div className="pet-card-info">
             <div className="pet-card-name-rating">

@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext } from "react";
+import { createContext, useEffect, useState } from "react";
 import { pet_list } from "../assets/assets";
 
 
@@ -10,8 +10,30 @@ const StoreContextProvider = (props) => {
     // eslint-disable-next-line no-unused-vars
     const url = "http://localhost:4000";
 
+    const [cartItems, setCartItems]=useState({});
+
+    const addToCart = (cardId) => {
+        if (!cartItems[cardId]) {
+            setCartItems((prev)=>({...prev,[cardId]:1}))
+        } else {
+            setCartItems((prev)=>({...prev,[cardId]:prev[cardId]+1}))
+        }
+    }
+
+    const removeFromCart = (cardId) => {
+        setCartItems((prev)=>({...prev, [cardId]:prev[cardId]-1}))
+    }
+
+    useEffect(() => {
+        console.log(cartItems);
+    },[cartItems])
+
     const contextValue = {
-        pet_list
+        pet_list,
+        cartItems,
+        setCartItems,
+        addToCart,
+        removeFromCart 
     }
 
     return (

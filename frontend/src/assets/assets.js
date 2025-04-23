@@ -5,6 +5,9 @@ import illustration from './illustration.png'
 import menu from './menu.png'
 import cross from './cross_icon.png'
 import rating_stars from './rating_stars.png'
+import add_icon_white from './add_icon_white.png'
+import add_icon_green from './add_icon_green.png'
+import remove_icon_red from './remove_icon_red.png'
 
 
 import menu_1 from './Menu_1.png'
@@ -51,7 +54,10 @@ export const assets = {
     illustration,
     menu,
     cross,
-    rating_stars
+    rating_stars,
+    add_icon_white,
+    add_icon_green,
+    remove_icon_red
 }
 
 export const menu_list = [
