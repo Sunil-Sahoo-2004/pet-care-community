@@ -115,7 +115,7 @@ pet-care-community/
 
 
 
-7. body-parser : 
+7. body-parser / or we can make it Without bodyParser because express have by default bodyParser express.json() : 
     Purpose: Middleware to parse incoming request bodies.
     Use: To extract form or JSON data from requests.
 
