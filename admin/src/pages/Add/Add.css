@@ -10,6 +10,14 @@
     gap: 20px;
 }
 
+.add-type {
+    width: max(40%, 280px);
+}
+
+.add-type select {
+    padding: 10px;
+}
+
 .add-img-upload img {
     width: 120px;
 }

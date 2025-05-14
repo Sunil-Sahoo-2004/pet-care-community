@@ -6,11 +6,12 @@ const addPet = async (req, res) => {
     let image_filename = `${req.file.filename}`;
 
     const pet = new petModel({
-        name : req.body.name,
-        description : req.body.description,
-        price : req.body.price,
-        category : req.body.category,
-        image : image_filename
+        name: req.body.name,
+        description: req.body.description,
+        price: req.body.type === 'sell' ? req.body.price : undefined, 
+        category: req.body.category,
+        image: image_filename,
+        type: req.body.type 
     })
 
     try {

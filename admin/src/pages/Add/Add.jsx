@@ -10,7 +10,8 @@ const Add = ({url}) => {
     name: "",
     description: "",
     price: "",
-    category: "Dog"
+    category: "Dog",
+    type: "sell"
   })
 
   const onChangeHandler = (event) => {
@@ -27,6 +28,7 @@ const Add = ({url}) => {
     formData.append("price",Number(data.price))
     formData.append("category",data.category)
     formData.append("image",image)
+    formData.append("type", data.type);
 
     const response = await axios.post(`${url}/api/pet/add`, formData);
     if(response.data.success) {
@@ -34,7 +36,8 @@ const Add = ({url}) => {
         name: "",
         description: "",
         price: "",
-        category: "Dog"
+        category: "Dog",
+        type: "sell"
       })
       setImage(false)
       toast.success(response.data.message) 
@@ -47,6 +50,14 @@ const Add = ({url}) => {
   return (
     <div className='add'>
       <form onSubmit={onSubmitHandler} className='flex-col'>
+        <div className="add-type flex-col">
+          <p>Listing Type</p>
+          <select onChange={onChangeHandler} name="type" value={data.type}>
+            <option value="sell">Sell</option>
+            <option value="adopt">Adopt</option>
+          </select>
+        </div>
+
         <div className="add-img-upload flex-col">
           <p>Upload Image</p>
           <label htmlFor="image">
@@ -78,10 +89,12 @@ const Add = ({url}) => {
               <option value="Turtles">Turtles</option>
             </select>
           </div>
-          <div className="add-price flex-col">
-            <p>Product Price</p>
-            <input onChange={onChangeHandler} value={data.price} type="Number" name='price' placeholder='$20' />
-          </div>
+          {data.type === "sell" && (
+            <div className="add-price flex-col">
+              <p>Product Price</p>
+              <input onChange={onChangeHandler} value={data.price} type="number" name='price' placeholder='$20' />
+            </div>
+          )}
         </div>
         <button type='submit' className='add-btn'>Add</button>
       </form>

@@ -1,5 +1,6 @@
 .pet-display {
     margin-top: 30px;
+    padding: 0 0 40px;
 }
 
 .pet-display h2 {
@@ -13,4 +14,24 @@
     margin-top: 30px;
     gap: 30px;
     row-gap: 50px;
+}
+
+.view-all-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.view-all-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #41db58c3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.view-all-button:hover {
+  background-color: #e75440;
 }
