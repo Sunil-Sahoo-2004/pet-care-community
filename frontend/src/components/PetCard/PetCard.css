@@ -7,6 +7,9 @@
     animation: fadeIn 1s;
 }
 
+.card-item-counter .out, .card-item-counter .in {
+    cursor: pointer;
+}
 .pet-card-image {
     width: 100%;
     border-radius: 15px 15px 0px 0px;

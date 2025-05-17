@@ -8,6 +8,9 @@ import rating_stars from './rating_stars.png'
 import add_icon_white from './add_icon_white.png'
 import add_icon_green from './add_icon_green.png'
 import remove_icon_red from './remove_icon_red.png'
+import facebook_icon from './facebook_icon.png'
+import twitter_icon from './twitter_icon.png'
+import linkedin_icon from './linkedin_icon.png'
 
 
 import menu_1 from './Menu_1.png'
@@ -57,7 +60,10 @@ export const assets = {
     rating_stars,
     add_icon_white,
     add_icon_green,
-    remove_icon_red
+    remove_icon_red,
+    facebook_icon,
+    twitter_icon,
+    linkedin_icon
 }
 
 export const menu_list = [
