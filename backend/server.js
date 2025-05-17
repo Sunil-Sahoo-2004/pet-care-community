@@ -3,6 +3,7 @@ import cors from "cors"
 import { connectDB } from "./config/db.js"
 import petRouter from "./routes/pet.Route.js"
 import dotenv from 'dotenv'
+import userRouter from "./routes/user.Route.js"
 
 // dotenv config
 dotenv.config()
@@ -20,6 +21,7 @@ app.use(cors())
 connectDB();
 
 //api endpoints
+app.use("/users", userRouter)
 app.use("/api/pet", petRouter)
 app.use("/images", express.static('uploads'))
 
