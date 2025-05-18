@@ -27,12 +27,14 @@ const LoginPopup = ({ setShowLogin }) => {
     e.preventDefault();
     try {
       const res = await axios.post(`${url}/api/user/verifyOTP`, { userId, otp });
+
       if (res.data.success) {
         setToken(res.data.token);
         localStorage.setItem("token", res.data.token);
         alert("Account verified!");
         setShowLogin(false);
-      } else {
+      }
+      else {
         alert(res.data.message);
       }
     } catch (error) {
@@ -70,25 +72,31 @@ const LoginPopup = ({ setShowLogin }) => {
   return (
     <div className="login-popup">
       <form onSubmit={showOtp ? handleOtpSubmit : onSubmit} className="login-popup-container">
+
         <div className="popup-left">
           <div className="top-logo">
             <img src={assets.logo} alt="Logo" />
           </div>
+
           <h2>Welcome to<br /><strong>PET CARE COMMUNITY!</strong></h2>
           <p>Register to avail the best deals!</p>
+
           <div className="features">
             <div className="feature-box">
               <h4>Exclusive Deals and Discount</h4>
               <p>Unlock savings with our exclusive deals and discounts.</p>
             </div>
+
             <div className="feature-box">
               <h4>Swift Checkout Experience</h4>
               <p>Effortless checkout awaits: swift, seamless, and stress-free!</p>
             </div>
+
             <div className="feature-box">
               <h4>Easy Orders Tracking</h4>
               <p>Track your order history with ease, every step of the way!</p>
             </div>
+
           </div>
         </div>
 

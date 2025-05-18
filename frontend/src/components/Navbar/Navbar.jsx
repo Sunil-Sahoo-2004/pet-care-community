@@ -22,11 +22,7 @@ const Navbar = ({ setShowLogin }) => {
   return (
     <div className="navbar">
       <Link to="/" onClick={() => setMenu("home")}>
-        <img
-          src={assets.logo}
-          alt="This is the logo of our website that is the indetion of our website"
-          className="logo"
-        />
+        <img src={assets.logo} alt="This is the logo of our website that is the indetion of our website" className="logo"/>
       </Link>
 
       <div className="search-bar">
@@ -35,32 +31,10 @@ const Navbar = ({ setShowLogin }) => {
       </div>
 
       <ul className="navbar-menu">
-        <Link
-          to="/"
-          onClick={() => setMenu("home")}
-          className={menu === "home" ? "active" : ""}
-        >
-          home
-        </Link>
-        <a
-          href="#about-section"
-          onClick={() => setMenu("about")}
-          className={menu === "about" ? "active" : ""}
-        >
-          about
-        </a>
-        <a
-          href="#services-section"
-          onClick={() => setMenu("services")}
-          className={menu === "services" ? "active" : ""}
-        >
-          services
-        </a>
-        <div
-          className={`explore-dropdown ${menu === "explore" ? "active" : ""}`}
-          onClick={() => setMenu("explore")}
-        >
-          explore
+        <Link to="/" onClick={() => setMenu("home")} className={menu === "home" ? "active" : ""}>home</Link>
+        <a href="#about-section" onClick={() => setMenu("about")} className={menu === "about" ? "active" : ""}>about</a>
+        <a href="#services-section" onClick={() => setMenu("services")} className={menu === "services" ? "active" : ""}>services</a>
+        <div className={`explore-dropdown ${menu === "explore" ? "active" : ""}`} onClick={() => setMenu("explore")}>explore
           <ul className="dropdown-menu">
             <Link
               to="/explore-buy-pet"
@@ -74,24 +48,15 @@ const Navbar = ({ setShowLogin }) => {
             <Link className="dropdown-item">hospital</Link>
           </ul>
         </div>
-        <a
-          onClick={() => setMenu("contact-us")}
-          className={menu === "contact-us" ? "active" : ""}
-        >
-          contact us
-        </a>
+        <a onClick={() => setMenu("contact-us")} className={menu === "contact-us" ? "active" : ""}>contact us</a>
       </ul>
 
       <div className="navbar-right">
         <div className="navbar-cart-icon">
-          <Link to="/cart">
-            <img
-              src={assets.cart}
-              alt="This is the Cart that stored the marked item"
-            />
-          </Link>
+          <Link to="/cart"><img src={assets.cart} alt="This is the Cart that stored the marked item"/></Link>
           <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
         </div>
+
         {!token?<button onClick={() => setShowLogin(true)}>sign in</button>
         :<div className="navbar-profile">
           <img src={assets.profile_icon} alt="" />
@@ -100,19 +65,14 @@ const Navbar = ({ setShowLogin }) => {
             <hr />
             <li onClick={logout}><img src={assets.logout_icon} alt="" />Logout</li>
           </ul>
-          </div>}
+        </div>}
       </div>
 
       <div className="menu-icon" onClick={toggleResponsiveMenu}>
         <img src={assets.menu} alt="Menu Icon" />
       </div>
       <div className={`responsive-menu ${showResponsiveMenu ? "active" : ""}`}>
-        <img
-          src={assets.cross}
-          alt="close_menu icon"
-          className="close-icon"
-          onClick={toggleResponsiveMenu}
-        />
+        <img src={assets.cross} alt="close_menu icon" className="close-icon" onClick={toggleResponsiveMenu}/>
         <div className="responsive-menu-title">Explore</div>
         <Link
           to="/explore-buy-pet"
