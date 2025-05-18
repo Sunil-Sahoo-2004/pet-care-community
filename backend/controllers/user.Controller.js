@@ -2,8 +2,9 @@ import { otpModel } from "../models/otpModel.js";
 import { userModel } from '../models/userModel.js';
 import validator from 'validator'
 import bcrypt from 'bcrypt'
-import jwt from 'jsonwebtoken'
-import mailSender from "../utils/mailSender.js";
+import { sendOtp } from "./otp.Controller.js";
+import { response } from "express";
+
 
 // Register User
 const registerUser = async (req, res) => {
@@ -48,70 +49,42 @@ const registerUser = async (req, res) => {
 
         const userObj = newUser.toObject();
         delete userObj.password;
-        return res.status(201).json({ status: "PENDING", success: true, message: "User registered. OTP sent to email.", data: userObj });
+        return res.status(201).json({ status: "PENDING", success: true, message: "User Registred for verify an OTP sent to email.", data: userObj });
     } catch (error) {
         console.log(error)
         res.status(500).json({ success: false, message: "Internal Server Error", error: error})
     }
 }
 
-// Generate JSON WEB Token
-const createToken = (id) => {
-    return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "7d" })
+// login user
+const loginUser = async (req, res) => {
+  const { email, password } = req.body
+  try {
+    if (!email || !password) {
+      return res.status(403).json({ success: false, message: "All the fields are required"})
+    } 
+
+    const user = await userModel.findOne({email})
+    if (!user) {
+      return res.status(404).json({ success: false, message: "User not found" })
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password)
+    if (!isMatch) {
+      return res.status(401).json({ success: false, message: "Invalid credentials" })
+    }
+
+    await sendOtp(user)
+    const userObj = user.toObject();
+    delete userObj.password;
+    return res.status(200).json({ status: "PENDING", success: true, message: "user Loged In For veriy an OTP sent to email.", data: userObj });
+
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ success: false, message: "Internal Server Error ", error: error})
+  }
 }
 
-// Generate and send otp
-const sendOtp = async (user) => {
-  const otp = `${Math.floor(1000 + Math.random() * 9000)}`;
 
-  await mailSender(
-    user.email,
-    "Your Verification OTP",
-    `<h3>Welcome!</h3><p>Your OTP is <strong>${otp}</strong>. It is valid for 5 minutes.</p>`
-  );
 
-  const hashedOtp = await bcrypt.hash(otp, 10);
-
-  await otpModel.create({
-    userId: user._id,
-    otp: hashedOtp,
-  });
-};
-
-// verify otp
-const verifyOTP = async (req, res) => {
-  try {
-    const { userId, otp } = req.body;
-
-    if (!userId || !otp) {
-      return res.status(400).json({ success: false, message: "userId and otp are required" });
-    }
-
-    const otpRecord = await otpModel.findOne({ userId }).sort({ createdAt: -1 });
-    if (!otpRecord) {
-      return res.status(400).json({ success: false, message: "OTP not found or expired" });
-    }
-
-    const isValid = await bcrypt.compare(otp, otpRecord.otp);
-    if (!isValid) {
-      return res.status(400).json({ success: false, message: "Invalid OTP" });
-    }
-
-    await userModel.findByIdAndUpdate(userId, { verified: true });
-
-    await otpModel.deleteMany({ userId });
-
-    const token = createToken(userId)
-    res.cookie("token", token, {
-      httpOnly: true,
-      maxAge: 7 * 24 * 60 * 60 * 1000,
-    });
-
-    res.status(200).json({ status: "VERIFIED", success: true, message: "User verified successfully", token: token });
-  } catch (error) {
-    console.error("OTP verification error:", error);
-    res.status(500).json({ success: false, message: "Internal Server Error", error: error.message });
-  }
-};
-
-export { registerUser, verifyOTP }
+export { registerUser, loginUser }

@@ -7,8 +7,8 @@ export const StoreContext = createContext(null)
 
 const StoreContextProvider = (props) => {
 
-    // eslint-disable-next-line no-unused-vars
     const url = "http://localhost:4000";
+    const [token, setToken] = useState("");
 
     const [cartItems, setCartItems]=useState({});
 
@@ -36,8 +36,10 @@ const StoreContextProvider = (props) => {
     }
 
     useEffect(() => {
-        console.log(cartItems);
-    },[cartItems])
+        if (localStorage.getItem("token")) {
+            setToken(localStorage.getItem("token"))
+        }
+    },[])
 
     const contextValue = {
         pet_list,
@@ -45,7 +47,10 @@ const StoreContextProvider = (props) => {
         setCartItems,
         addToCart,
         removeFromCart,
-        getTotalCartAmount
+        getTotalCartAmount,
+        url,
+        token,
+        setToken
     }
 
     return (
