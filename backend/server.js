@@ -31,9 +31,9 @@ app.use('/api/auth', authRouter);
 app.use('/api/users', userRouter);
 app.use('/api/pets', petRouter);
 app.use('/api/services', serviceRouter);
-app.use('/api/forum', forumRouter);
-app.use('/api/admin', adminRouter);
-app.use('/api/articles', articleRouter);
+app.use('/api/forum', forumRouter); // pending
+app.use('/api/admin', adminRouter); // working.......
+app.use('/api/articles', articleRouter); // pending
 
 // start server
 app.listen(process.env.PORT, () => {

@@ -1,4 +1,4 @@
-import { createServiceService, deleteServiceService, getAllServices, getServiceByIdService, updateServiceService } from "../services/service.service.js";
+import { createBookingService, createServiceService, deleteServiceService, getAllServices, getServiceByIdService, updateServiceService } from "../services/service.service.js";
 
 // create service
 const createService = async (req, res) => {
@@ -95,7 +95,21 @@ const deleteService = async (req, res) => {
 // book service
 const bookService = async (req, res) => {
     try {
-       
+        const serviceId = req.params.id;
+        const { date, note } = req.body;
+
+    if (!date) {
+        return res.status(400).json({ success: false, message: "Booking date is required" });
+    }
+
+    const booking = await createBookingService({
+        userId: req.user._id,
+        serviceId,
+        date,
+        note,
+    });
+
+    res.status(201).json({ success: true, message: "Booking request submitted and is pending provider approval.", data: booking });
     } catch (error) {
         console.log(error)
         res.status(500).json({ success:false, message: "Internal server error" })

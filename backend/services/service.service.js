@@ -1,4 +1,5 @@
 import { userModel } from "../models/auth.model.js";
+import { bookingModel } from "../models/bookService.model.js";
 import { serviceModel } from "../models/service.model.js";
 import mongoose from "mongoose";
 
@@ -56,9 +57,8 @@ const updateServiceService = async (id, updates, userId) => {
     if (!service) throw new Error("Service not found");
 
     const isOwner = service.owner.toString() === user._id.toString();
-    const isAdmin = user.role === "admin";
 
-    if (!isOwner && !isAdmin) {
+    if (!isOwner) {
       throw new Error("Unauthorized: Only owner or admin can update this service");
     }
 
@@ -75,13 +75,30 @@ const deleteServiceService = async (id, userId) => {
     }
 
     const isOwner = service.owner.toString() === user._id.toString();
-    const isAdmin = user.role === "admin";
 
-    if (!isOwner && !isAdmin) {
+    if (!isOwner) {
       throw new Error("Unauthorized: Only owner or admin can delete this service");
     }
 
     await serviceModel.findByIdAndDelete(id);
 };
 
-export { getAllServices, getServiceByIdService, createServiceService, updateServiceService, deleteServiceService }
+// Book Service 
+const createBookingService = async ({ userId, serviceId, date, note }) => {
+    const service = await serviceModel.findById(serviceId);
+    if (!service) {
+      throw new Error("Service not found");
+    }
+
+    const booking = await bookingModel.create({
+      user: userId,
+      service: serviceId,
+      date,
+      note,
+      status: 'pending'
+    });
+
+    return booking;
+}
+
+export { getAllServices, getServiceByIdService, createServiceService, updateServiceService, deleteServiceService, createBookingService }

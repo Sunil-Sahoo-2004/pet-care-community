@@ -23,6 +23,6 @@ serviceRouter.put('/update/:id', authMiddleware, updateService);
 serviceRouter.delete('/delete/:id', authMiddleware, deleteService);
 
 // Book an appointment
-serviceRouter.post('/:id/book', bookService);
+serviceRouter.post('/:id/book', authMiddleware, bookService);
 
 export default serviceRouter
