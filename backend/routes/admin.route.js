@@ -19,7 +19,7 @@ adminRouter.get('/services/pending', adminOnly, getPendingServices)
 adminRouter.put('/services/:id/verify', adminOnly, verifyService)
 
 // Handle reported forum posts
-router.get('/reports', adminOnly);
-router.delete('/forum/:id', adminOnly);
+adminRouter.get('/reports', adminOnly);
+adminRouter.delete('/forum/:id', adminOnly);
 
 export default adminRouter;

@@ -59,6 +59,7 @@ const register = async (req, res) => {
 const verifyOtp = async (req, res) => {
     try {
         const { userId, otp } = req.body;
+        console.log("Sending OTP verification", { userId, otp });
 
         if (!userId || !otp) {
           return res.status(400).json({ success: false, message: "userId and otp are required" });
