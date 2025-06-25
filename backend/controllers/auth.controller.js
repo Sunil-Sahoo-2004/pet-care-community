@@ -26,7 +26,7 @@ const register = async (req, res) => {
 
         const existingUser = await userModel.findOne({ email })
         if (existingUser) {
-            if (!existingUser.verified) {
+            if (!existingUser.isVerified) {
                 await otpModel.deleteMany({ userId: existingUser._id });
                 await userModel.findByIdAndDelete(existingUser._id);
             } else {
