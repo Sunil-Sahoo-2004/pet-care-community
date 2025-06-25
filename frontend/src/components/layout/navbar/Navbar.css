@@ -2,13 +2,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   padding: var(--spacing-sm) var(--spacing-xl);
   background-color: #e6f5ff;
   font-family: var(--font-family);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 100;
 }
 
-/* Left Side */
+/* =========================
+   Left Section
+========================= */
 .navbar-left {
   display: flex;
   align-items: center;
@@ -33,11 +38,14 @@
   color: var(--color-black);
 }
 
-/* Center: Nav Items */
+/* =========================
+   Nav Items
+========================= */
 .navbar-list {
   display: flex;
   align-items: center;
   gap: var(--spacing-lg);
+  margin-left: var(--spacing-md);
 }
 
 .navbar-list a {
@@ -67,23 +75,26 @@
   border-radius: 2px;
 }
 
-/* Right Side */
+/* =========================
+   Right Section
+========================= */
 .navbar-right {
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
+  flex-wrap: wrap;
 }
 
-/* Search box */
+/* Search Box */
 .search-box {
   display: flex;
   align-items: center;
-  justify-content: center;
   background-color: var(--color-white);
   border: 1px solid var(--color-divider);
   border-radius: var(--radius-md);
-  padding: 0px 12px;
-  width: 400px;
+  padding: 0px 14px;
+  width: 296px;
+  max-width: 100%;
   transition: var(--transition-base);
 }
 
@@ -103,11 +114,9 @@
   font-size: var(--font-sm);
   width: 100%;
   background: transparent;
-  margin-bottom: 0;
 }
 
 input:focus {
-  border-color: none;
   box-shadow: none;
 }
 
@@ -118,9 +127,8 @@ input:focus {
   padding: 8px 16px;
   border-radius: var(--radius-md);
   cursor: pointer;
-  max-width: 100px;
-  width: 100%;
   transition: var(--transition-base);
+  white-space: nowrap;
 }
 
 .login-button {
@@ -143,4 +151,70 @@ input:focus {
 
 .signup-button:hover {
   background-color: var(--color-black);
+}
+
+/* =========================
+   Menu Icon
+========================= */
+.menu-icon {
+  display: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: var(--color-black);
+}
+
+/* =========================
+   Responsive Styles
+========================= */
+@media (max-width: 1120px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--spacing-md);
+  }
+
+  .menu-icon {
+    display: block;
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+  }
+
+  .navbar-list {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    background-color: #e6f5ff;
+    border-radius: var(--radius-md);
+    margin-top: var(--spacing-sm);
+    padding: var(--spacing-sm) 0;
+  }
+
+  .navbar-list.open {
+    display: flex;
+  }
+
+  .navbar-right {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-sm);
+  }
+
+  .search-box {
+    flex: 1;
+    min-width: 160px;
+    max-width: 100%;
+  }
+
+  .login-button,
+  .signup-button {
+    padding: 6px 12px;
+    width: auto;
+    margin-top: 0;
+  }
 }

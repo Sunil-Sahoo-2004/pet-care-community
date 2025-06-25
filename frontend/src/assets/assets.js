@@ -3,7 +3,7 @@ import logo from './logo.png'
 import googleLogo from './google-logo.png'
 import facebookLogo from './facebook-logo.png'
 import Profile from './Profile.jpg'
-
+import header from './header-image.png'
 
 import pet_1 from './pet-1.webp'
 import pet_2 from './pet-2.jpg'
@@ -19,7 +19,8 @@ export const assets = {
     logo,
     googleLogo,
     facebookLogo,
-    Profile
+    Profile,
+    header
 }
 
 
