@@ -25,45 +25,7 @@ const LoginPopup = () => {
     setData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleOtpChange = (index, value) => {
-    if (!/^\d?$/.test(value)) return;
-
-    const newOtp = [...otpArray];
-    newOtp[index] = value;
-    setOtpArray(newOtp);
-
-    if (value && index < 3) {
-      inputRefs.current[index + 1]?.focus();
-    }
-  };
-
-  const handleOtpKeyDown = (index, e) => {
-    if (e.key === 'Backspace' && !otpArray[index] && index > 0) {
-      inputRefs.current[index - 1]?.focus();
-    }
-  };
-
-  const handleOtpSubmit = async (e) => {
-    e.preventDefault();
-    const otp = otpArray.join('');
-    if (otp.length < 4) return toast.warn('Please enter complete OTP');
-
-    try {
-      console.log("Sending OTP verification", { userId, otp });
-      const response = await verifyOtp(userId, otp);
-      
-      if (response.data.status === 'VERIFIED') {
-        toast.success('OTP verified successfully!');
-        setShowOtpInput(false);
-        setOtpArray(['', '', '', '']);
-        setData({ name: '', email: '', password: '' });
-      }
-    } catch (error) {
-      const msg = error.response?.data?.message || 'OTP verification failed';
-      toast.error(msg);
-    }
-  };
-
+  // submit for sending otp
   const onSubmit = async (e) => {
     e.preventDefault();
     if (!validate(data, currState)) return;
@@ -82,6 +44,46 @@ const LoginPopup = () => {
       setUserId(response.data.data._id);
     } catch (error) {
       const msg = error.response?.data?.message || 'Unexpected error';
+      toast.error(msg);
+    }
+  };
+
+  const handleOtpChange = (index, value) => {
+    if (!/^\d?$/.test(value)) return;
+
+    const newOtp = [...otpArray];
+    newOtp[index] = value;
+    setOtpArray(newOtp);
+
+    if (value && index < 3) {
+      inputRefs.current[index + 1]?.focus();
+    }
+  };
+
+  const handleOtpKeyDown = (index, e) => {
+    if (e.key === 'Backspace' && !otpArray[index] && index > 0) {
+      inputRefs.current[index - 1]?.focus();
+    }
+  };
+
+  // Handle OTP
+  const handleOtpSubmit = async (e) => {
+    e.preventDefault();
+    const otp = otpArray.join('');
+    if (otp.length < 4) return toast.warn('Please enter complete OTP');
+
+    try {
+      console.log("Sending OTP verification", { userId, otp });
+      const response = await verifyOtp(userId, otp);
+      
+      if (response.data.status === 'VERIFIED') {
+        toast.success('OTP verified successfully!');
+        setShowOtpInput(false);
+        setOtpArray(['', '', '', '']);
+        setData({ name: '', email: '', password: '' });
+      }
+    } catch (error) {
+      const msg = error.response?.data?.message || 'OTP verification failed';
       toast.error(msg);
     }
   };

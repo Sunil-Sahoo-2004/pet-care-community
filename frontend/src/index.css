@@ -1,26 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
-*,
-::after,
-::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Outfit;
-  scroll-behavior: smooth;
-}
-
-body{
-  height: 100vh;
-}
-
-.App {
-  width: 100%;
-  margin: auto;
-}
-
+/* =========================
+   Root Design Tokens
+========================= */
 :root {
-  --font-family: 'Segoe UI', sans-serif;
+  --font-family: 'Outfit', 'Segoe UI', sans-serif;
 
   /* Font Sizes */
   --font-xs: 0.75rem;
@@ -44,8 +28,11 @@ body{
   --color-muted: #6b7280;
   --color-divider: #e5e7eb;
   --color-bg-light: #f9fafb;
+  --color-bg-dark: #fdcfcf;
   --color-white: #ffffff;
   --color-black: #111827;
+  --color-tomato: tomato;
+  --color-tomato-light: rgb(251, 130, 108);
   --color-overlay: rgba(0, 0, 0, 0.6);
 
   /* Radius & Shadows */
@@ -57,7 +44,42 @@ body{
   --transition-base: all 0.3s ease;
 }
 
-/* Animations */
+/* =========================
+   Global Resets & Defaults
+========================= */
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+  scroll-behavior: smooth;
+}
+
+html {
+  font-size: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--color-bg-light);
+  color: var(--color-black);
+  font-size: var(--font-md);
+  line-height: 1.6;
+}
+
+/* =========================
+   App Wrapper
+========================= */
+.App {
+  max-width: 100%;
+  margin: auto;
+}
+
+/* =========================
+   Animations
+========================= */
 @keyframes gradientMove {
   0% {
     background-position: 0% 50%;

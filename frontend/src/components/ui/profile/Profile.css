@@ -1,0 +1,403 @@
+/* ------------------- Profile Wrapper ------------------- */
+.profile {
+  max-width: 95%;
+  margin: var(--spacing-xl) auto;
+}
+
+/* ------------------- Personal Details Section ------------------- */
+.user-personal-details {
+  background: var(--color-bg-dark);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.user-personal-detail {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-lg);
+  flex: 1 1 auto;
+  min-width: 250px;
+  flex-wrap: wrap;
+}
+
+.user-image {
+  width: 90px;
+  height: 90px;
+  flex-shrink: 0;
+}
+
+.user-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-name {
+  margin: 0;
+  font-size: var(--font-xl);
+  font-weight: 600;
+  color: var(--color-black);
+  letter-spacing: 2px;
+}
+
+.user-email-id {
+  margin: var(--spacing-xs) 0;
+  font-size: var(--font-sm);
+  color: var(--color-muted);
+}
+
+.more-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  font-size: var(--font-xs);
+  color: var(--color-muted);
+}
+
+/* Edit Button */
+.edit-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.edit-profile .edit-btn {
+  background: var(--color-white);
+  color: var(--color-black);
+  border: 1px solid var(--color-divider);
+  padding: var(--spacing-xs) var(--spacing-md);
+  cursor: pointer;
+  font-size: var(--font-sm);
+  font-weight: 500;
+  transition: var(--transition-base);
+}
+
+/* ======================== Responsive Fixes ======================== */
+@media (max-width: 1024px) {
+  .user-personal-details {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .user-personal-detail {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .edit-profile {
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: var(--spacing-sm);
+  }
+}
+
+@media (max-width: 540px) {
+  .user-personal-detail {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile {
+    max-width: 88%;
+    margin: var(--spacing-sm) auto;
+  }
+
+  .user-detail {
+    align-items: center;
+  }
+
+  .edit-profile {
+    justify-content: center;
+  }
+}
+
+
+
+/* ------------------- Beloved Pets Section ------------------- */
+.my-beloved-pets-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.my-beloved-pets-section-heading h3 {
+  font-size: var(--font-lg);
+  color: var(--color-black);
+}
+
+.add-btn {
+  background: transparent;
+  border: 1px solid var(--color-tomato);
+  color: var(--color-tomato);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.pets {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 30px;
+  row-gap: 50px;
+  margin-top: 30px;
+}
+
+.pet-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-base);
+}
+
+.pet-image {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto var(--spacing-sm);
+  border: 4px solid var(--color-tomato);
+}
+
+.pet-image img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+
+.pet-card h4 {
+  text-align: center;
+}
+
+.pet-desc {
+  font-size: var(--font-sm);
+  color: var(--color-muted);
+  margin-bottom: var(--spacing-xs);
+  text-align: center;
+}
+
+.pet-description {
+  font-size: var(--font-xs);
+  color: var(--color-black);
+  text-align: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.view-btn {
+  display: block;
+  margin: 0 auto;
+  background: var(--color-tomato);
+  color: white;
+  border: none;
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.view-btn:hover {
+  background: var(--color-tomato-light);
+}
+
+/* ------------------- User Activity Section ------------------- */
+.user-profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-xl);
+}
+
+@media (min-width: 768px) {
+  .user-profile-details {
+    flex-direction: row;
+  }
+
+  .pet-prefferences-details,
+  .user-activity-details {
+    width: 50%;
+  }
+}
+
+.pet-prefferences-details,
+.user-activity-details {
+  margin-bottom: var(--spacing-xl);
+}
+
+.community-activity-section {
+  background: var(--color-white);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.community-activity-section h3 {
+  font-size: var(--font-lg);
+  margin-bottom: var(--spacing-md);
+  color: var(--color-black);
+}
+
+.activity-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.activity-item {
+  background: var(--color-bg-light);
+  padding: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-sm);
+  color: var(--color-black);
+  box-shadow: var(--shadow-sm);
+}
+
+.activity-item small {
+  color: var(--color-muted);
+  font-size: var(--font-xs);
+}
+
+/* ------------------- Preferences Section ------------------- */
+.my-preferences-section {
+  background: var(--color-white);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  margin-top: var(--spacing-xl);
+}
+
+.my-preferences-section-header {
+  margin-bottom: var(--spacing-md);
+}
+
+.my-preferences-section-header h3 {
+  font-size: var(--font-lg);
+  color: var(--color-black);
+}
+
+.preferences {
+  display: flex;
+  gap: var(--spacing-lg);
+  flex-wrap: wrap;
+}
+
+.preference-item {
+  flex: 1 1 150px;
+  background: var(--color-bg-light);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-base);
+}
+
+.preference-item .icon {
+  font-size: 1.8rem;
+  color: var(--color-tomato);
+  margin-bottom: var(--spacing-sm);
+}
+
+.preference-item h4 {
+  font-size: var(--font-sm);
+  color: var(--color-black);
+  margin-bottom: var(--spacing-xs);
+}
+
+.preference-item p {
+  font-size: var(--font-xs);
+  color: var(--color-muted);
+}
+
+/* ------------------- Saved Resources Section ------------------- */
+.saved-resources-section {
+  background: var(--color-white);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  margin-top: var(--spacing-xl);
+}
+
+.saved-resources-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.saved-resources-header h3 {
+  font-size: var(--font-lg);
+  color: var(--color-black);
+}
+
+.saved-resources-header .add-new-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-danger);
+  font-weight: 500;
+  cursor: pointer;
+  font-size: var(--font-sm);
+}
+
+/* Resource Cards Grid */
+.resource-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+/* Individual Resource Card */
+.resource-card {
+  background: var(--color-bg-light);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  transition: var(--transition-base);
+}
+
+.resource-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Image inside card */
+.resource-image img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* Label (e.g., Article, Guide) */
+.resource-label {
+  font-size: var(--font-xs);
+  color: var(--color-muted);
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Title */
+.resource-title {
+  font-size: var(--font-sm);
+  color: var(--color-black);
+  font-weight: 500;
+}
