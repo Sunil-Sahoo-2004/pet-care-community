@@ -1,0 +1,9 @@
+.news-letter {
+    background-color: white;
+    padding: var(--spacing-md) var(--spacing-xl);
+}
+
+.Partners {
+    background-color: white;
+    padding: var(--spacing-md) var(--spacing-xl);
+}

@@ -1,0 +1,109 @@
+.offer-section {
+  text-align: center;
+  padding: var(--spacing-xl);
+  background-color: var(--color-white);
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.offer-section h2 {
+  font-size: var(--font-2xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-black);
+}
+
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--spacing-lg);
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 var(--spacing-md);
+}
+
+.offer-card {
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-base);
+  animation: slideIn 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.offer-card .icon {
+  margin-bottom: var(--spacing-sm);
+}
+
+.offer-card h3 {
+  font-size: var(--font-lg);
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-black);
+}
+
+.offer-card p {
+  font-size: var(--font-sm);
+  color: var(--color-muted);
+  margin-bottom: var(--spacing-md);
+}
+
+.offer-card button {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-sm);
+  transition: var(--transition-base);
+}
+
+.offer-card button:hover {
+  background-color: var(--color-black);
+}
+
+/* ------------------------------------------
+  Responsive Adjustments (Media Queries)
+------------------------------------------- */
+
+@media screen and (max-width: 768px) {
+  .offer-section {
+    padding: var(--spacing-lg);
+  }
+
+  .offer-section h2 {
+    font-size: var(--font-xl);
+  }
+
+  .offer-card {
+    padding: var(--spacing-md);
+  }
+
+  .offer-card h3 {
+    font-size: var(--font-md);
+  }
+
+  .offer-card p {
+    font-size: var(--font-xs);
+  }
+
+  .offer-card button {
+    font-size: var(--font-xs);
+    padding: var(--spacing-xs) var(--spacing-md);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .offers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .offer-section h2 {
+    font-size: var(--font-lg);
+  }
+}

@@ -1,61 +1,94 @@
 import React, { useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import './Navbar.css';
-import { FaSearch, FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import { assets } from '../../../assets/assets';
-import { NavLink } from 'react-router-dom';
-import Input from '../../../atoms/input/input';
 import Button from '../../../atoms/button/Button';
 
 const Navbar = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [menuOpen, setMenuOpen] = useState(false);
   const [menu, setMenu] = useState('home');
-  const [menuOpen, setMenuOpen] = useState(false); // for mobile menu toggle
+  const navigate = useNavigate();
 
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const handleMenuClick = (section) => {
+    setMenu(section);
+    setMenuOpen(false);
   };
 
-  const handleMenuClick = (menuName) => {
-    setMenu(menuName);
-    setMenuOpen(false); // close menu on selection
+  const handleLoginClick = () => {
+    navigate('/login'); // ✅ Corrected navigation
   };
 
   return (
-    <div className="navbar">
-      <div className="navbar-left">
-        <div className="logo-part">
-          <img src={assets.logo} alt="logo" className="logo" />
-          <span className="brand">PetConnect</span>
+    <nav className="navbar">
+      <div className="navbar-container">
+        {/* Logo */}
+        <div className="navbar-left">
+          <div className="logo-nav">
+            <img src={assets.logo} alt="logo" className="logo-icon" />
+            <span className="brand">PetCare</span>
+          </div>
+
+          {/* Nav Links */}
+          <div className={`navbar-list ${menuOpen ? 'open' : ''}`}>
+            <NavLink
+              to="/"
+              onClick={() => handleMenuClick('home')}
+              className={menu === 'home' ? 'active' : ''}
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to="/adoption"
+              onClick={() => handleMenuClick('adoption')}
+              className={menu === 'adoption' ? 'active' : ''}
+            >
+              Adoption
+            </NavLink>
+            <NavLink
+              to="/services"
+              onClick={() => handleMenuClick('services')}
+              className={menu === 'services' ? 'active' : ''}
+            >
+              Services
+            </NavLink>
+            <NavLink
+              to="/forum"
+              onClick={() => handleMenuClick('forum')}
+              className={menu === 'forum' ? 'active' : ''}
+            >
+              Forum
+            </NavLink>
+            <NavLink
+              to="/knowledge"
+              onClick={() => handleMenuClick('knowledge')}
+              className={menu === 'knowledge' ? 'active' : ''}
+            >
+              Knowledge
+            </NavLink>
+          </div>
         </div>
 
-        <div className={`navbar-list ${menuOpen ? 'open' : ''}`}>
-          <NavLink to="/" onClick={() => handleMenuClick('home')} className={menu === 'home' ? 'active' : ''}>Home</NavLink>
-          <NavLink to="/adoption" onClick={() => handleMenuClick('adoption')} className={menu === 'adoption' ? 'active' : ''}>Adoption</NavLink>
-          <NavLink to="/services" onClick={() => handleMenuClick('services')} className={menu === 'services' ? 'active' : ''}>Services</NavLink>
-          <NavLink to="/forum" onClick={() => handleMenuClick('forum')} className={menu === 'forum' ? 'active' : ''}>Forum</NavLink>
-          <NavLink to="/knowledge" onClick={() => handleMenuClick('knowledge')} className={menu === 'knowledge' ? 'active' : ''}>Knowledge</NavLink>
-        </div>
-      </div>
-
-      <div className="navbar-right">
-        <div className="search-box">
-          <FaSearch className="search-icon" />
-          <Input
-            type="text"
-            placeholder="Search for pets, services, and more..."
-            className="search-input"
-            value={searchQuery}
-            onChange={handleSearchChange}
+        {/* Right Side */}
+        <div className="navbar-right">
+          <div className="notification">
+            <img src={assets.ringing} alt="notification" />
+          </div>
+          <Button
+            text="Login"
+            className="login-btn" // ✅ Matches CSS class
+            onClick={handleLoginClick}
           />
+          <div className="hamburger" onClick={toggleMenu}>
+            {menuOpen ? <FaTimes /> : <FaBars />}
+          </div>
         </div>
-        <Button text="Login" className="login-button" />
-        <Button text="Signup" className="signup-button" />
       </div>
 
-      <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
-        {menuOpen ? <FaTimes /> : <FaBars />}
-      </div>
-    </div>
+      {/* Overlay */}
+      {menuOpen && <div className="overlay-nav" onClick={() => setMenuOpen(false)} />}
+    </nav>
   );
 };
 

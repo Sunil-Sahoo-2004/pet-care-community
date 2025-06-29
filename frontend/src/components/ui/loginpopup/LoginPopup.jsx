@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './LoginPopup.css';
 import Input from '../../../atoms/input/input';
 import Button from '../../../atoms/button/Button';
@@ -8,7 +9,11 @@ import { toast } from 'react-toastify';
 import { loginUser, registerUser, verifyOtp,  } from '../../../services/authService';
 
 const LoginPopup = () => {
-  const [currState, setCurrState] = useState('Login');
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const initialState = location.pathname === '/register' ? 'Register' : 'Login';
+  const [currState, setCurrState] = useState(initialState);
   const [data, setData] = useState({ 
     name: '', 
     email: '', 
@@ -147,7 +152,13 @@ const LoginPopup = () => {
 
               <p className="toggle-text">
                 {currState === 'Login' ? "Don't have an account? " : "Already have an account? "}
-                <span onClick={() => setCurrState(currState === 'Login' ? 'Register' : 'Login')}>
+                <span
+                  onClick={() => {
+                    const next = currState === 'Login' ? 'Register' : 'Login';
+                      setCurrState(next);
+                      navigate(next === 'Login' ? '/login' : '/register');
+                    }}
+                  >
                   {currState === 'Login' ? 'Register' : 'Login'}
                 </span>
               </p>
