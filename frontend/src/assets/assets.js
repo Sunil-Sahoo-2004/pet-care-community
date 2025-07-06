@@ -5,6 +5,10 @@ import facebookLogo from './facebook-logo.png'
 import Profile from './Profile.jpg'
 import header from './header-image.png'
 import ringing from './ringing.png'
+import successAnimation from './Animation - 1751286654114.json'
+import user from './user.png'
+import AdoptionHeader from './Adoption-header.png'
+import delete_icon from './delete.gif'
 
 import pet_1 from './pet-1.webp'
 import pet_2 from './pet-2.jpg'
@@ -34,6 +38,7 @@ import partner4 from './Chewy.png';
 import partner5 from './PetSmart-Charities.png';
 import partner6 from './The-Humane-Society.png';
 
+
 export const assets = {
     loginBback,
     logo,
@@ -41,7 +46,11 @@ export const assets = {
     facebookLogo,
     Profile,
     header,
-    ringing
+    ringing,
+    successAnimation,
+    user,
+    AdoptionHeader,
+    delete_icon
 }
 
 

@@ -1,13 +1,13 @@
 /* ------------------- Profile Wrapper ------------------- */
 .profile {
-  max-width: 95%;
+  padding: var(--spacing-sm) var(--spacing-lg);
   margin: var(--spacing-xl) auto;
 }
 
 /* ------------------- Personal Details Section ------------------- */
 .user-personal-details {
-  background: var(--color-bg-dark);
-  padding: var(--spacing-xl);
+  background: var(--color-white);
+  padding: var(--spacing-sm) var(--spacing-lg);
   border-radius: var(--radius-md);
   display: flex;
   flex-wrap: wrap;
@@ -72,14 +72,15 @@
 .edit-profile {
   display: flex;
   align-items: center;
+  gap: 10px;
   justify-content: center;
   flex: 0 0 auto;
 }
 
 .edit-profile .edit-btn {
-  background: var(--color-white);
-  color: var(--color-black);
-  border: 1px solid var(--color-divider);
+  background: var(--color-primary);
+  color: var(--color-white);
+  border: none;
   padding: var(--spacing-xs) var(--spacing-md);
   cursor: pointer;
   font-size: var(--font-sm);
@@ -87,7 +88,12 @@
   transition: var(--transition-base);
 }
 
-/* ======================== Responsive Fixes ======================== */
+.edit-profile .edit-btn:hover {
+  background: var(--color-primary-dark, #2563eb);
+}
+
+
+/* Responsive */
 @media (max-width: 1024px) {
   .user-personal-details {
     flex-direction: column;
@@ -127,8 +133,6 @@
   }
 }
 
-
-
 /* ------------------- Beloved Pets Section ------------------- */
 .my-beloved-pets-section-heading {
   display: flex;
@@ -144,12 +148,17 @@
 
 .add-btn {
   background: transparent;
-  border: 1px solid var(--color-tomato);
-  color: var(--color-tomato);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
   padding: var(--spacing-xs) var(--spacing-md);
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: var(--transition-base);
+}
+
+.add-btn:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
 }
 
 .pets {
@@ -161,6 +170,7 @@
 }
 
 .pet-card {
+  position: relative;
   background: var(--color-white);
   border: 1px solid var(--color-divider);
   border-radius: var(--radius-md);
@@ -170,13 +180,14 @@
 }
 
 .pet-image {
+  position: relative;
   width: 90px;
   height: 90px;
   border-radius: 50%;
   object-fit: cover;
   display: block;
   margin: 0 auto var(--spacing-sm);
-  border: 4px solid var(--color-tomato);
+  border: 4px solid var(--color-primary);
 }
 
 .pet-image img {
@@ -206,7 +217,7 @@
 .view-btn {
   display: block;
   margin: 0 auto;
-  background: var(--color-tomato);
+  background: var(--color-primary);
   color: white;
   border: none;
   padding: var(--spacing-xs) var(--spacing-md);
@@ -216,7 +227,30 @@
 }
 
 .view-btn:hover {
-  background: var(--color-tomato-light);
+  background: var(--color-primary-dark, #2563eb);
+}
+
+.delete-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+}
+
+.delete-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.delete-icon:hover img {
+  transform: scale(1.1);
 }
 
 /* ------------------- User Activity Section ------------------- */
@@ -313,7 +347,7 @@
 
 .preference-item .icon {
   font-size: 1.8rem;
-  color: var(--color-tomato);
+  color: var(--color-primary);
   margin-bottom: var(--spacing-sm);
 }
 
@@ -351,11 +385,18 @@
 
 .saved-resources-header .add-new-btn {
   background: transparent;
-  border: none;
-  color: var(--color-danger);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
   font-weight: 500;
   cursor: pointer;
   font-size: var(--font-sm);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-sm);
+}
+
+.saved-resources-header .add-new-btn:hover {
+  background: var(--color-primary);
+  color: white;
 }
 
 /* Resource Cards Grid */
@@ -365,7 +406,6 @@
   gap: var(--spacing-lg);
 }
 
-/* Individual Resource Card */
 .resource-card {
   background: var(--color-bg-light);
   padding: var(--spacing-md);
@@ -379,7 +419,6 @@
   box-shadow: var(--shadow-md);
 }
 
-/* Image inside card */
 .resource-image img {
   width: 100%;
   height: auto;
@@ -388,14 +427,12 @@
   margin-bottom: var(--spacing-sm);
 }
 
-/* Label (e.g., Article, Guide) */
 .resource-label {
   font-size: var(--font-xs);
   color: var(--color-muted);
   margin-bottom: var(--spacing-xs);
 }
 
-/* Title */
 .resource-title {
   font-size: var(--font-sm);
   color: var(--color-black);

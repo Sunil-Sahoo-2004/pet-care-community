@@ -1,0 +1,45 @@
+.pet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+  padding: var(--spacing-lg);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Optional: Add smooth transition when items change */
+.pet-grid > * {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Responsive spacing adjustments */
+@media (max-width: 1024px) {
+  .pet-grid {
+    gap: 20px;
+    padding: var(--spacing-md);
+  }
+}
+
+@media (max-width: 768px) {
+  .pet-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+    padding: var(--spacing-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .pet-grid {
+    grid-template-columns: 1fr;
+    padding: var(--spacing-sm);
+  }
+}
+
+
+.no-pets-msg {
+  text-align: center;
+  font-size: var(--font-md);
+  color: var(--color-muted);
+  padding: var(--spacing-lg);
+}
+

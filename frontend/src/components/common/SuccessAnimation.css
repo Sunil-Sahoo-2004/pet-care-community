@@ -1,0 +1,17 @@
+.success-animation {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.success-message {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  font-weight: 600;
+  color: var(--color-primary, #3b82f6);
+}

@@ -36,6 +36,25 @@ const updateProfile = async (req, res) => {
         }
 }
 
+const toggleUserRole = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const user = await userModel.findById(userId);
+
+    if (!user) return res.status(404).json({ success: false, message: 'User not found' });
+
+    // Toggle role
+    user.role = user.role === 'business' ? 'user' : 'business';
+    await user.save();
+
+    res.json({ success: true, message: `Switched to ${user.role}`, data: user });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+};
+
+
 const deleteAccount = async (req, res) => {
   try {
     const deletedUser = await userModel.findByIdAndDelete(req.user.id);
@@ -55,4 +74,4 @@ const deleteAccount = async (req, res) => {
   }
 };
 
-export { getProfile, updateProfile, deleteAccount }
+export { getProfile, updateProfile, toggleUserRole, deleteAccount }

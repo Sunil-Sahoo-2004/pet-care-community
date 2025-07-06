@@ -1,6 +1,6 @@
 import express from 'express'
 import multer from 'multer'
-import { addPet, contactPetOwner, deletePet, getAllPet, getPetById, updatePet } from '../controllers/pet.controller.js'
+import { addPet, contactPetOwner, deletePet, getAllPet, getMyPets, getPetById, updatePet } from '../controllers/pet.controller.js'
 import authMiddleware from '../middlewares/auth.middleware.js'
 
 const petRouter = express.Router()
@@ -20,6 +20,9 @@ petRouter.get('/get-all', getAllPet);
 
 // Get single pet by ID
 petRouter.get('/get-by-id', getPetById);
+
+// Get my pets
+petRouter.get('/my-pets', authMiddleware, getMyPets );
 
 // Add a new pet 
 petRouter.post('/add-pet', authMiddleware, upload.single("images"), addPet);

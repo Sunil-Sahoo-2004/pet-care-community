@@ -95,6 +95,12 @@ const verifyOtp = async (req, res) => {
           maxAge: 7 * 24 * 60 * 60 * 1000,
         });
 
+        res.cookie("loggedIn", true, {
+            httpOnly: false,     
+            maxAge: 7 * 24 * 60 * 60 * 1000,
+            sameSite: "Lax",
+        });
+
         res.status(200).json({ status: "VERIFIED", success: true, message: "OTP verified successfully" });
     } catch (error) {
         console.log(error)
@@ -140,4 +146,14 @@ const googleOAuth = async (req, res) => {
     }
 }
 
-export { register, verifyOtp, login, googleOAuth }
+const logout = async (req, res) => {
+    try {
+        res.clearCookie('token');
+        res.status(200).json({ message: 'Logged out' });
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({ success: false, message: "Internal Server Error" })
+    }
+}
+
+export { register, verifyOtp, login, googleOAuth, logout }

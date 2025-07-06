@@ -11,3 +11,4 @@ const API = axios.create({
 export const registerUser = (data) => API.post('/register', data, { withCredentials: true });
 export const loginUser = (data) => API.post('/login', data, { withCredentials: true });
 export const verifyOtp = (userId, otp) => API.post('/verify', { userId, otp }, { withCredentials: true });
+export const logoutUser = () => API.post('/logout');

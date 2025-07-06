@@ -6,7 +6,8 @@ import Button from '../../../atoms/button/Button';
 import { assets } from '../../../assets/assets';
 import useValidation from '../../../hooks/useValidation';
 import { toast } from 'react-toastify';
-import { loginUser, registerUser, verifyOtp,  } from '../../../services/authService';
+import { loginUser, registerUser, verifyOtp } from '../../../services/authService';
+import SuccessAnimation from '../../common/SuccessAnimation';
 
 const LoginPopup = () => {
   const location = useLocation();
@@ -14,13 +15,10 @@ const LoginPopup = () => {
 
   const initialState = location.pathname === '/register' ? 'Register' : 'Login';
   const [currState, setCurrState] = useState(initialState);
-  const [data, setData] = useState({ 
-    name: '', 
-    email: '', 
-    password: '' 
-  });
+  const [data, setData] = useState({ name: '', email: '', password: '' });
   const [otpArray, setOtpArray] = useState(['', '', '', '']);
   const [showOtpInput, setShowOtpInput] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const [userId, setUserId] = useState(null);
   const { errors, validate } = useValidation();
   const inputRefs = useRef([]);
@@ -30,7 +28,6 @@ const LoginPopup = () => {
     setData(prev => ({ ...prev, [name]: value }));
   };
 
-  // submit for sending otp
   const onSubmit = async (e) => {
     e.preventDefault();
     if (!validate(data, currState)) return;
@@ -55,11 +52,9 @@ const LoginPopup = () => {
 
   const handleOtpChange = (index, value) => {
     if (!/^\d?$/.test(value)) return;
-
     const newOtp = [...otpArray];
     newOtp[index] = value;
     setOtpArray(newOtp);
-
     if (value && index < 3) {
       inputRefs.current[index + 1]?.focus();
     }
@@ -71,18 +66,16 @@ const LoginPopup = () => {
     }
   };
 
-  // Handle OTP
   const handleOtpSubmit = async (e) => {
     e.preventDefault();
     const otp = otpArray.join('');
     if (otp.length < 4) return toast.warn('Please enter complete OTP');
 
     try {
-      console.log("Sending OTP verification", { userId, otp });
       const response = await verifyOtp(userId, otp);
-      
       if (response.data.status === 'VERIFIED') {
         toast.success('OTP verified successfully!');
+        setShowSuccess(true);
         setShowOtpInput(false);
         setOtpArray(['', '', '', '']);
         setData({ name: '', email: '', password: '' });
@@ -96,6 +89,10 @@ const LoginPopup = () => {
   const handleSocialLogin = (provider) => {
     console.log(`Login with ${provider}`);
   };
+
+  if (showSuccess) {
+    return <SuccessAnimation onComplete={() => navigate('/')} />;
+  }
 
   return (
     <div className="login-page">
@@ -152,13 +149,11 @@ const LoginPopup = () => {
 
               <p className="toggle-text">
                 {currState === 'Login' ? "Don't have an account? " : "Already have an account? "}
-                <span
-                  onClick={() => {
-                    const next = currState === 'Login' ? 'Register' : 'Login';
-                      setCurrState(next);
-                      navigate(next === 'Login' ? '/login' : '/register');
-                    }}
-                  >
+                <span onClick={() => {
+                  const next = currState === 'Login' ? 'Register' : 'Login';
+                  setCurrState(next);
+                  navigate(next === 'Login' ? '/login' : '/register');
+                }}>
                   {currState === 'Login' ? 'Register' : 'Login'}
                 </span>
               </p>
@@ -167,7 +162,16 @@ const LoginPopup = () => {
             <form onSubmit={handleOtpSubmit}>
               <div className="otp-box">
                 {otpArray.map((digit, i) => (
-                  <input key={i} type="text" maxLength="1" value={digit} ref={(el) => (inputRefs.current[i] = el)} onChange={(e) => handleOtpChange(i, e.target.value)} onKeyDown={(e) => handleOtpKeyDown(i, e)} className="otp-input"/>
+                  <input
+                    key={i}
+                    type="text"
+                    maxLength="1"
+                    value={digit}
+                    ref={(el) => (inputRefs.current[i] = el)}
+                    onChange={(e) => handleOtpChange(i, e.target.value)}
+                    onKeyDown={(e) => handleOtpKeyDown(i, e)}
+                    className="otp-input"
+                  />
                 ))}
               </div>
               <Button type="submit" text="Verify OTP" className="login-btn" />

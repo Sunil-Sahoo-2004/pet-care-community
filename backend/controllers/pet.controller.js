@@ -29,6 +29,17 @@ const getPetById = async (req, res) => {
     }
 }
 
+// my-pets
+const getMyPets = async (req, res) => {
+    try {
+        const pets = await petModel.find({ owner: req.user.id });
+        res.status(200).json({ success: true, data: pets });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ success: false, message: "Internal Server Error" })
+    }
+}
+
 // add-pet
 const addPet = async (req, res) => {
     try {
@@ -153,4 +164,4 @@ const contactPetOwner = async (req, res) => {
     }
 }
 
-export { getAllPet, getPetById, addPet, updatePet, deletePet, contactPetOwner }
+export { getAllPet, getPetById, getMyPets, addPet, updatePet, deletePet, contactPetOwner }

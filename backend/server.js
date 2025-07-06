@@ -1,6 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import cros from 'cors'
+import path from 'path';
 import { connectDB } from './config/db.js'
 import authRouter from './routes/auth.route.js'
 import userRouter from './routes/user.route.js'
@@ -34,6 +35,8 @@ app.use('/api/services', serviceRouter);
 app.use('/api/forum', forumRouter); // pending
 app.use('/api/admin', adminRouter); // working.......
 app.use('/api/articles', articleRouter); // pending
+
+app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
 // start server
 app.listen(process.env.PORT, () => {
