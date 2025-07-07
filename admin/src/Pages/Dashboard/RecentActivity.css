@@ -1,0 +1,41 @@
+.recent-activity {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+  margin: 30px 20px;
+}
+
+.recent-activity h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #333;
+}
+
+.recent-activity ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recent-activity li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.activity-icon {
+  color: #5a5bd9;
+  margin-right: 12px;
+  font-size: 18px;
+  margin-top: 3px;
+}
+
+.recent-activity p {
+  margin: 0;
+  font-weight: 500;
+}
+
+.recent-activity small {
+  color: #888;
+}

@@ -3,6 +3,7 @@ import { otpModel } from "../models/otp.model.js";
 import { createToken, sendLoginNotification, sendOtp, sendWelcomeMail } from "../services/auth.service.js";
 import validator from 'validator'
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken';
 
 const register = async (req, res) => {
     try {
@@ -137,6 +138,33 @@ const login = async (req, res) => {
     }
 }
 
+const adminLogin = (req, res) => {
+  const { email, password } = req.body;
+
+  const adminUser = {
+    name : 'admin',
+    email: 'admin@example.com',
+    password: 'admin@123',
+    role: 'admin',
+  };
+
+  if (email === adminUser.email && password === adminUser.password) {
+    const token = jwt.sign(
+      { email: adminUser.email, role: adminUser.role },
+      process.env.JWT_SECRET || 'secret123',
+      { expiresIn: '1h' }
+    );
+
+    return res.json({
+      token,
+      role: adminUser.role,
+      message: 'Admin login successful',
+    });
+  }
+
+  return res.status(401).json({ message: 'Invalid admin credentials' });
+};
+
 const googleOAuth = async (req, res) => {
     try {
         
@@ -156,4 +184,4 @@ const logout = async (req, res) => {
     }
 }
 
-export { register, verifyOtp, login, googleOAuth, logout }
+export { register, verifyOtp, login, adminLogin, googleOAuth, logout }
