@@ -20,17 +20,6 @@ import {
   FaExclamationTriangle,
 } from "react-icons/fa";
 
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
-
 // Export image assets
 export const assets = {
   AdminBg,
