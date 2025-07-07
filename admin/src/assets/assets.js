@@ -18,6 +18,9 @@ import {
   FaComment,
   FaPlusSquare,
   FaExclamationTriangle,
+  FaUserFriends,
+  FaClipboardList,
+  FaCalendarAlt,
 } from "react-icons/fa";
 
 // Export image assets
@@ -100,4 +103,60 @@ export const data = [
   { month: "Apr", posts: 400, comments: 230, likes: 300 },
   { month: "May", posts: 350, comments: 210, likes: 280 },
   { month: "Jun", posts: 420, comments: 250, likes: 320 },
+];
+
+export const data1 = [
+  { name: "Approved", value: 82 },
+  { name: "Pending", value: 14 },
+  { name: "Rejected", value: 2 },
+];
+
+export const alerts = [
+  {
+    message: "Unauthorized login attempt detected from unknown IP.",
+    time: "5 minutes ago",
+    severity: "High",
+  },
+  {
+    message: 'User "FluffyPaws" reported for inappropriate content.',
+    time: "1 hour ago",
+    severity: "High",
+  },
+  {
+    message: 'Suspicious activity detected on "Admin1" account.',
+    time: "3 hours ago",
+    severity: "High",
+  },
+  {
+    message: "5 new pending forum post approvals.",
+    time: "5 hours ago",
+    severity: "Medium",
+  },
+];
+
+export const ForamsStats = [
+  {
+    title: "Total Forums",
+    value: "10",
+    subtitle: "Overall count of all forums",
+    icon: FaComments,
+  },
+  {
+    title: "Total Posts",
+    value: "51,180",
+    subtitle: "Across all active forums",
+    icon: FaClipboardList,
+  },
+  {
+    title: "Total Members",
+    value: "22,250",
+    subtitle: "Users participating in forums",
+    icon: FaUserFriends,
+  },
+  {
+    title: "New Forums This Month",
+    value: "0",
+    subtitle: "Created in the current month",
+    icon: FaCalendarAlt,
+  },
 ];

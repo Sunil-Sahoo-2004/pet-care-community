@@ -1,0 +1,125 @@
+.forum-table-section {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Filters */
+.table-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.table-filters input[type="text"],
+.table-filters select,
+.table-filters button {
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  color: #333;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.table-filters input[type="text"]:focus,
+.table-filters select:focus,
+.table-filters button:focus {
+  border-color: #5a5bd9;
+  background-color: #fff;
+}
+
+.table-filters .clear {
+  color: #e74c3c;
+  background-color: #fff0f0;
+  border-color: #f1c0c0;
+}
+
+.table-filters .clear:hover {
+  background-color: #ffe0e0;
+}
+
+/* Table */
+.forum-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.forum-table thead {
+  background-color: #f5f6fa;
+  font-weight: 600;
+  color: #333;
+}
+
+.forum-table th,
+.forum-table td {
+  text-align: left;
+  padding: 12px 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.forum-table td {
+  color: #444;
+}
+
+.forum-table input[type="checkbox"] {
+  cursor: pointer;
+}
+
+/* Badge */
+.status-badge {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #27ae60;
+  background-color: #eafaf1;
+  border-radius: 20px;
+}
+
+/* Icons */
+.edit-icon,
+.delete-icon {
+  cursor: pointer;
+  font-size: 14px;
+  color: #555;
+  transition: color 0.2s ease;
+}
+
+.edit-icon:hover {
+  color: #5a5bd9;
+}
+
+.delete-icon:hover {
+  color: #e74c3c;
+}
+
+/* Pagination */
+.table-pagination {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #777;
+}
+
+.table-pagination div span {
+  margin: 0 6px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.table-pagination .active-page {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}

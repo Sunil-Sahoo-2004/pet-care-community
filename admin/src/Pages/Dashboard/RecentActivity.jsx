@@ -8,7 +8,7 @@ const RecentActivity = () => {
       <h3>Recent Activity</h3>
       <ul>
         {activities.map((activity, index) => {
-          const Icon = activity.icon; // ✅ Assign the component reference here
+          const Icon = activity.icon;
           return (
             <li key={index}>
               <span className="activity-icon"><Icon /></span>

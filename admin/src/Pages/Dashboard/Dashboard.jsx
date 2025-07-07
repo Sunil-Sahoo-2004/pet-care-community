@@ -4,6 +4,8 @@ import StatsCards from './StatsCards'
 import QuickActions from './QuickActions'
 import RecentActivity from './RecentActivity'
 import UserActivityChart from './UserActivityChart'
+import ModerationStatusChart from './ModerationStatusChart'
+import SecurityAlerts from './SecurityAlerts'
 
 const Dashboard = () => {
   return (
@@ -13,6 +15,8 @@ const Dashboard = () => {
       <QuickActions />
       <RecentActivity />
       <UserActivityChart />
+      <ModerationStatusChart />
+      <SecurityAlerts />
     </div>
   )
 }

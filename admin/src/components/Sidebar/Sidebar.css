@@ -1,9 +1,11 @@
 .sidebar {
     width: 18%;
-    min-height: 100vh;
+    max-height: 91.9vh;
     border-right: 1.5px solid #dcdcdc;
     font-size: max(1vw, 10px);
     background-color: #ffffff;
+    position: sticky;
+    top: 56px;
 }
 
 .sidebar-options {

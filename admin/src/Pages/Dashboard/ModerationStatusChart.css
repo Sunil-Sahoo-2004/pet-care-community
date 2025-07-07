@@ -1,0 +1,24 @@
+.moderation-status-chart {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin: 30px 20px;
+}
+
+.moderation-status-chart h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #333333;
+}
+
+@media (max-width: 768px) {
+  .moderation-status-chart {
+    padding: 16px;
+  }
+
+  .moderation-status-chart h3 {
+    font-size: 18px;
+  }
+}
