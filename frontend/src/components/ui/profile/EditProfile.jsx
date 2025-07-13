@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import './EditProfile.css';
-import { getProfile, updateProfile } from '../../../services/profileServive';
-import { toast } from 'react-toastify';
-
+import React, { useEffect, useState } from "react";
+import "./EditProfile.css";
+import { getProfile, updateProfile } from "../../../services/profileService";
+import { toast } from "react-toastify";
 
 const EditProfile = ({ onClose }) => {
   const [form, setForm] = useState({
-    name: '',
-    lat: '',
-    lng: '',
-    discoveryRadius: ''
+    name: "",
+    lat: "",
+    lng: "",
+    discoveryRadius: "",
   });
 
   const [loading, setLoading] = useState(true);
@@ -25,12 +24,12 @@ const EditProfile = ({ onClose }) => {
           name: user.name,
           lat,
           lng,
-          discoveryRadius: user.discoveryRadius || 10
+          discoveryRadius: user.discoveryRadius || 10,
         });
 
         setLoading(false);
       } catch (err) {
-        toast.error('Failed to load profile', err);
+        toast.error("Failed to load profile", err);
       }
     };
 
@@ -48,39 +47,78 @@ const EditProfile = ({ onClose }) => {
       await updateProfile({
         name: form.name,
         location: {
-          type: 'Point',
-          coordinates: [parseFloat(form.lng), parseFloat(form.lat)]
+          type: "Point",
+          coordinates: [parseFloat(form.lng), parseFloat(form.lat)],
         },
-        discoveryRadius: parseInt(form.discoveryRadius)
+        discoveryRadius: parseInt(form.discoveryRadius),
       });
-      toast.success('Profile updated successfully!');
-      onClose(); 
+      toast.success("Profile updated successfully!");
+      onClose();
     } catch (err) {
-      toast.error('Failed to update profile', err);
+      toast.error("Failed to update profile", err);
     }
   };
 
-  if (loading) return <div className="modal-overlay"><div className="edit-profile-popup">Loading...</div></div>;
+  if (loading)
+    return (
+      <div className="modal-overlay">
+        <div className="edit-profile-popup">Loading...</div>
+      </div>
+    );
 
   return (
     <div className="modal-overlay">
       <div className="edit-profile-popup">
-        <button className="close-btn" onClick={onClose}>✖</button>
+        <button className="close-btn" onClick={onClose}>
+          ✖
+        </button>
         <h2>Edit Your Profile</h2>
         <form className="edit-profile-form" onSubmit={handleUpdate}>
-          <label>Name:
-            <input type="text" name="name" value={form.name} onChange={handleChange} required />
+          <label>
+            Name:
+            <input
+              type="text"
+              name="name"
+              value={form.name}
+              onChange={handleChange}
+              required
+            />
           </label>
-          <label>Latitude:
-            <input type="number" name="lat" value={form.lat} onChange={handleChange} required step="any" />
+          <label>
+            Latitude:
+            <input
+              type="number"
+              name="lat"
+              value={form.lat}
+              onChange={handleChange}
+              required
+              step="any"
+            />
           </label>
-          <label>Longitude:
-            <input type="number" name="lng" value={form.lng} onChange={handleChange} required step="any" />
+          <label>
+            Longitude:
+            <input
+              type="number"
+              name="lng"
+              value={form.lng}
+              onChange={handleChange}
+              required
+              step="any"
+            />
           </label>
-          <label>Discovery Radius (km):
-            <input type="number" name="discoveryRadius" value={form.discoveryRadius} onChange={handleChange} required />
+          <label>
+            Discovery Radius (km):
+            <input
+              type="number"
+              name="discoveryRadius"
+              value={form.discoveryRadius}
+              onChange={handleChange}
+              required
+            />
           </label>
-          <button type="submit" className="update-btn">Update Profile</button>
+          <button type="submit" className="update-btn">
+            Update Profile
+          </button>
         </form>
       </div>
     </div>

@@ -92,7 +92,7 @@ const verifyOtp = async (req, res) => {
 
         const token = createToken(user._id, user.name, user.email, user.role);
         res.cookie("token", token, {
-          httpOnly: true,
+          httpOnly: false,
           maxAge: 7 * 24 * 60 * 60 * 1000,
         });
 
@@ -155,8 +155,14 @@ const adminLogin = (req, res) => {
       { expiresIn: '1h' }
     );
 
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: false, // use true in production (HTTPS)
+      sameSite: "lax", // or "none" if using cross-site cookies with HTTPS
+      maxAge: 60 * 60 * 1000, // 1 hour
+    });
+
     return res.json({
-      token,
       role: adminUser.role,
       message: 'Admin login successful',
     });

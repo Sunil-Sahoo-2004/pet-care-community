@@ -1,0 +1,121 @@
+.service-table-section {
+  width: 100%;
+  padding: 2rem;
+  background-color: #f9fafb;
+  min-height: 100vh;
+}
+
+.service-table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.service-table-header h3 {
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.service-filter-dropdown {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  outline: none;
+  cursor: pointer;
+}
+
+.service-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.service-table th,
+.service-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.service-table th {
+  background-color: #f1f5f9;
+  color: #333;
+  font-weight: 600;
+}
+
+.status {
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+.status.pending {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.status.approved {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.status.rejected {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.status.banned {
+  background-color: #e0e7ff;
+  color: #3730a3;
+}
+
+.approve,
+.reject,
+.ban {
+  font-size: 1.2rem;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.approve {
+  color: #16a34a;
+}
+
+.reject {
+  color: #dc2626;
+}
+
+.ban {
+  color: #6366f1;
+}
+
+.approve:hover,
+.reject:hover,
+.ban:hover {
+  transform: scale(1.15);
+}
+
+@media (max-width: 768px) {
+  .service-table-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .service-filter-dropdown {
+    width: 100%;
+  }
+
+  .service-table th,
+  .service-table td {
+    padding: 0.8rem;
+  }
+}

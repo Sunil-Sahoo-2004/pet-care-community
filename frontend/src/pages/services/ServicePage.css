@@ -1,0 +1,25 @@
+.service-page {
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-family: var(--font-family);
+  background-color: var(--color-bg-light);
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.main-heading {
+  text-align: center;
+  font-size: var(--font-2xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.sub-heading {
+  text-align: center;
+  font-size: var(--font-md);
+  color: var(--color-muted);
+  margin-bottom: var(--spacing-xl);
+  max-width: 600px;
+  margin-inline: auto;
+}

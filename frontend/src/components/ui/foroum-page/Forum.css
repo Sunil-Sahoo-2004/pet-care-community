@@ -1,0 +1,309 @@
+/* Layout */
+.forum-container {
+  display: flex;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  font-family: var(--font-family);
+  background-color: var(--color-bg-light);
+}
+
+/* Sidebar and Trending */
+.forum-sidebar,
+.forum-trending {
+  width: 18%;
+  padding: var(--spacing-md);
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.forum-sidebar h4,
+.forum-trending h4,
+.forum-trending h5 {
+  font-size: var(--font-lg);
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-black);
+}
+
+.forum-sidebar ul,
+.forum-trending ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.forum-sidebar li,
+.forum-trending li {
+  padding: var(--spacing-xs) 10px;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-sm);
+  color: var(--color-muted);
+  transition: var(--transition-base);
+}
+
+.forum-sidebar li:hover,
+.forum-sidebar li.active {
+  background-color: var(--color-bg-dark);
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+/* Main Content */
+.forum-main {
+  width: 60%;
+}
+
+/* Post Button */
+.forum-post-button {
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.forum-post-button button {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: var(--font-md);
+  cursor: pointer;
+  transition: var(--transition-base);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.forum-post-button button:hover {
+  background-color: var(--color-muted);
+}
+
+.forum-post-button .icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+/* Discussions */
+.forum-discussions h3 {
+  margin-bottom: var(--spacing-md);
+  font-size: var(--font-xl);
+  color: var(--color-black);
+}
+
+.discussion-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.discussion-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-base);
+}
+
+.discussion-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Scroll wrapper */
+.discussion-cards-wrapper {
+  max-height: none;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.discussion-cards-wrapper.scrollable {
+  max-height: 620px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.discussion-cards-wrapper::-webkit-scrollbar {
+  width: 6px;
+}
+
+.discussion-cards-wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--color-muted);
+  border-radius: 4px;
+}
+
+
+.user-info {
+  font-size: var(--font-xs);
+  color: var(--color-muted);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-xs);
+}
+
+.user-info svg {
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+.discussion-card h4 {
+  font-size: var(--font-lg);
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-black);
+}
+
+.discussion-card p {
+  font-size: var(--font-md);
+  color: var(--color-muted);
+  margin-bottom: var(--spacing-sm);
+}
+
+.tags span {
+  display: inline-block;
+  background-color: var(--color-divider);
+  color: var(--color-black);
+  font-size: var(--font-xs);
+  margin: var(--spacing-xs) var(--spacing-xs) var(--spacing-xs) 0;
+  padding: 2px 10px;
+  border-radius: 999px;
+}
+
+.stats {
+  display: flex;
+  gap: var(--spacing-md);
+  font-size: var(--font-xs);
+  color: var(--color-muted);
+  margin-top: var(--spacing-sm);
+}
+
+.stats span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Trending Section */
+.forum-trending ol {
+  padding-left: var(--spacing-md);
+  margin-top: var(--spacing-sm);
+  font-size: var(--font-sm);
+  color: var(--color-muted);
+}
+
+.forum-trending a {
+  display: inline-block;
+  margin-top: var(--spacing-sm);
+  color: var(--color-primary);
+  font-size: var(--font-sm);
+  text-decoration: underline;
+}
+
+/* Modal Styling */
+/* Modal Overlay */
+.forum-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Modal Box */
+.forum-modal {
+  background: var(--color-white);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: var(--shadow-md);
+  font-family: var(--font-family);
+}
+
+/* Close Button */
+.forum-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: var(--font-lg);
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.forum-modal-close:hover {
+  color: var(--color-danger);
+}
+
+/* Modal Heading */
+.forum-modal h3 {
+  font-size: var(--font-xl);
+  margin-bottom: var(--spacing-md);
+  color: var(--color-black);
+  text-align: center;
+}
+
+/* Form Styles */
+.forum-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.forum-form input,
+.forum-form textarea {
+  font-size: var(--font-md);
+  padding: var(--spacing-sm);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-sm);
+  width: 100%;
+  font-family: var(--font-family);
+}
+
+.forum-form textarea {
+  resize: vertical;
+}
+
+/* Submit Button */
+.submit-btn {
+  padding: var(--spacing-sm);
+  font-size: var(--font-md);
+  font-weight: 600;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.submit-btn:hover {
+  background-color: var(--color-black);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .forum-container {
+    flex-direction: column;
+  }
+
+  .forum-main,
+  .forum-sidebar,
+  .forum-trending {
+    width: 100%;
+  }
+
+  .discussion-cards {
+    flex-direction: column;
+  }
+}

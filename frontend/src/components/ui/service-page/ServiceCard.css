@@ -1,0 +1,148 @@
+.service-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition: var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  max-width: 620px;
+  animation: fadeIn 0.3s ease-in-out;
+  width: 100%;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.service-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.service-info {
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.service-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.service-header h4 {
+  font-size: var(--font-lg);
+  font-weight: 600;
+  color: var(--color-black);
+}
+
+.tag {
+  background-color: var(--color-bg-dark);
+  color: var(--color-primary);
+  padding: 0.2rem 0.5rem;
+  font-size: var(--font-sm);
+  border-radius: var(--radius-sm);
+  margin-top: var(--spacing-xs);
+}
+
+.rating,
+.description,
+.location {
+  font-size: var(--font-sm);
+  color: var(--color-muted);
+}
+
+.description {
+  color: var(--color-black);
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.price {
+  font-size: var(--font-lg);
+  font-weight: 600;
+  color: var(--color-tomato);
+}
+
+.details-btn {
+  padding: var(--spacing-xs) var(--spacing-md);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition-base);
+  font-size: var(--font-sm);
+  margin-top: var(--spacing-xs);
+}
+
+.details-btn:hover {
+  background-color: var(--color-accent);
+}
+
+/* =========================
+   Responsive Design
+========================= */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .service-card {
+    max-width: 100%;
+  }
+
+  .service-card img {
+    height: 180px;
+  }
+
+  .price-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+  }
+
+  .details-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .service-card img {
+    height: 160px;
+  }
+
+  .service-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+  }
+
+  .tag {
+    margin-top: 0;
+  }
+
+  .description {
+    font-size: var(--font-xs);
+  }
+
+  .location {
+    font-size: var(--font-xs);
+  }
+
+  .price {
+    font-size: var(--font-md);
+  }
+}

@@ -6,6 +6,8 @@ import Profile from '../components/ui/profile/Profile';
 import ProtectedRoute from './ProtectedRoute';
 import PublicRoute from './PublicRoute';
 import Adoption from '../pages/Adoption/Adoption';
+import ServicePage from '../pages/services/ServicePage';
+import Foroums from '../pages/Foroums/Foroums';
 
 
 const AppRoutes = () => {
@@ -40,6 +42,22 @@ const AppRoutes = () => {
       element: (
         <ProtectedRoute>
           <Adoption />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: '/services',
+      element: (
+        <ProtectedRoute>
+          <ServicePage />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: '/forum',
+      element: (
+        <ProtectedRoute>
+          <Foroums />
         </ProtectedRoute>
       ),
     },

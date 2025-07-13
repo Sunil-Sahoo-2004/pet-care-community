@@ -8,11 +8,18 @@ const serviceSchema = new mongoose.Schema({
   address: { type: String },
   contactEmail: { type: String },
   contactPhone: { type: String },
+  image: { type: String },
+  price: { type: Number, required: true, min: 0 },
   location: {
     type: { type: String, enum: ['Point'], default: 'Point' },
     coordinates: { type: [Number], default: [0, 0] },
   },
   verified: { type: Boolean, default: false },
+  status: {
+    type: String,
+    enum: ["Pending", "Approved", "Rejected", "Banned"],
+    default: "Pending"
+  },
   createdAt: { type: Date, default: Date.now },
 });
 

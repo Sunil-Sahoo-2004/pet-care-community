@@ -1,9 +1,11 @@
+import { serviceModel } from "../models/service.model.js";
 import { createBookingService, createServiceService, deleteServiceService, getAllServices, getServiceByIdService, updateServiceService } from "../services/service.service.js";
 
 // create service
 const createService = async (req, res) => {
     try {
-        const {name, category, description, address, contactEmail, contactPhone } = req.body
+        const {name, category, description, address, contactEmail, contactPhone, price } = req.body
+        let image_filename = `${req.file.filename}`;
 
         const userId = req.user.id
 
@@ -23,7 +25,9 @@ const createService = async (req, res) => {
             description,
             address,
             contactEmail,
-            contactPhone
+            contactPhone,
+            price: parseFloat(price),
+            image : image_filename
         }
 
         const service = await createServiceService(data, true)
@@ -37,6 +41,26 @@ const createService = async (req, res) => {
         res.status(500).json({ success:false, message: "Internal server error" })
     }
 }
+
+// get-my services
+const getMyServices = async (req, res) => {
+  try {
+    const userId = req.user.id;
+
+    const services = await serviceModel.find({ owner: userId }).sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      services,
+    });
+  } catch (error) {
+    console.error('Error fetching user services:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Internal server error',
+    });
+  }
+};
 
 // get nearby services
 const getNearbyServices = async (req, res) => {
@@ -116,4 +140,4 @@ const bookService = async (req, res) => {
     }
 }
 
-export { createService, getNearbyServices, getServices, getServiceById, updateService, deleteService, bookService }
+export { createService, getMyServices, getNearbyServices, getServices, getServiceById, updateService, deleteService, bookService }

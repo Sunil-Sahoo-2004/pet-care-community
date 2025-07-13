@@ -304,12 +304,57 @@
   font-size: var(--font-sm);
   color: var(--color-black);
   box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.activity-item strong {
+  color: var(--color-primary);
 }
 
 .activity-item small {
   color: var(--color-muted);
   font-size: var(--font-xs);
 }
+
+/* Button Container */
+.activity-item div {
+  display: flex;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-xs);
+}
+
+/* Edit Button */
+.edit-btn {
+  background-color: var(--color-accent);
+  border: none;
+  color: var(--color-white);
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-sm);
+  transition: var(--transition-base);
+}
+
+.edit-btn:hover {
+  background-color: #16a34a; /* darker green */
+}
+
+/* Delete Button */
+.delete-button {
+  background-color: var(--color-danger);
+  border: none;
+  color: var(--color-white);
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-sm);
+  transition: var(--transition-base);
+}
+
+.delete-btn:hover {
+  background-color: #b91c1c; /* darker red */
+}
+
 
 /* ------------------- Preferences Section ------------------- */
 .my-preferences-section {

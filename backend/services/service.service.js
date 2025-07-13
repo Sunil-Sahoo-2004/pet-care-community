@@ -43,6 +43,8 @@ const createServiceService = async (data, checkDuplicate = false) => {
         address: data.address,
         contactEmail: data.contactEmail,
         contactPhone: data.contactPhone,
+        image: data.image,
+        price: data.price,
     });
 
     const saved = await newService.save();

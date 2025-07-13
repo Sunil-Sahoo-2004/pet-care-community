@@ -160,3 +160,31 @@ export const ForamsStats = [
     icon: FaCalendarAlt,
   },
 ];
+
+
+export const initialServices = [
+  {
+    id: 1,
+    name: 'Vet Consultation',
+    provider: 'Dr. John Smith',
+    category: 'Health',
+    status: 'Pending',
+    submittedAt: '2024-07-27',
+  },
+  {
+    id: 2,
+    name: 'Dog Walking',
+    provider: 'PawPal Services',
+    category: 'Exercise',
+    status: 'Approved',
+    submittedAt: '2024-07-20',
+  },
+  {
+    id: 3,
+    name: 'Cat Grooming',
+    provider: 'FelineCare',
+    category: 'Grooming',
+    status: 'Pending',
+    submittedAt: '2024-07-25',
+  },
+];

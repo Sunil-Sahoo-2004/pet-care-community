@@ -1,0 +1,8 @@
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--spacing-lg);
+  width: 100%;
+  margin: 0 auto;
+  animation: fadeIn 0.4s ease-in-out;
+}

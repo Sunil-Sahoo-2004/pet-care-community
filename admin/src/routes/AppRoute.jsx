@@ -5,6 +5,7 @@ import Login from '../components/Login/Login'
 import ProtectedRoute from './ProtectedRoute';
 import Dashboard from '../Pages/Dashboard/Dashboard';
 import Forums from '../Pages/Forums/Forums';
+import ServiceTable from '../Pages/Services/ServiceTable';
 
 
 const AppRoutes = () => {
@@ -30,6 +31,14 @@ const AppRoutes = () => {
       element: (
         <ProtectedRoute>
           <Forums />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: '/services',
+      element: (
+        <ProtectedRoute>
+          <ServiceTable />
         </ProtectedRoute>
       ),
     },

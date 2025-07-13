@@ -5,9 +5,29 @@ import PetPreferences from "./PetPreferences";
 import MyPreferences from "./MyPreferences";
 import CommunityActivity from "./CommunityActivity";
 import SavedResources from "./SavedResourses";
-
+import MyServices from "./MyServices";
+import { jwtDecode } from "jwt-decode";
 
 const Profile = () => {
+  const rawToken = document.cookie
+    .split("; ")
+    .find((row) => row.startsWith("token="))
+    ?.split("=")[1];
+
+  const token = rawToken ? decodeURIComponent(rawToken) : null;
+
+  let role = "";
+  let userName = "";
+  if (token) {
+    try {
+      const decoded = jwtDecode(token);
+      role = decoded?.role;
+      userName = decoded?.name || "";
+    } catch (error) {
+      console.error("Invalid token", error);
+    }
+  }
+
   return (
     <div className="profile">
       <UserDetails />
@@ -15,9 +35,10 @@ const Profile = () => {
         <div className="pet-prefferences-details">
           <PetPreferences />
           <MyPreferences />
+          {role === "business" && <MyServices />}
         </div>
         <div className="user-activity-details">
-          <CommunityActivity />
+          <CommunityActivity userName={userName} />
           <SavedResources />
         </div>
       </div>

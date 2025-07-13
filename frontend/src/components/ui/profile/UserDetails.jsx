@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { assets } from "../../../assets/assets";
-import { getProfile, switchUserRole } from "../../../services/profileServive";
+import { getProfile, switchUserRole } from "../../../services/profileService";
 import { toast } from "react-toastify";
 import EditProfile from "./EditProfile";
 
@@ -67,7 +67,7 @@ const UserDetails = () => {
         </div>
         <div className="edit-profile">
           <button className="edit-btn" onClick={handleSwitchRole}>
-            {user.role === 'business' ? 'Switch to User' : 'Switch to Business'}
+            {user.role === "business" ? "Switch to User" : "Switch to Business"}
           </button>
           <button className="edit-btn" onClick={() => setShowEdit(true)}>
             Edit Profile
