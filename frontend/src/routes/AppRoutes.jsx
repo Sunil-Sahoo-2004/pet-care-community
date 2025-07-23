@@ -8,6 +8,7 @@ import PublicRoute from './PublicRoute';
 import Adoption from '../pages/Adoption/Adoption';
 import ServicePage from '../pages/services/ServicePage';
 import Foroums from '../pages/Foroums/Foroums';
+import Knowledge from '../pages/Knowledge/Knowledge';
 
 
 const AppRoutes = () => {
@@ -58,6 +59,14 @@ const AppRoutes = () => {
       element: (
         <ProtectedRoute>
           <Foroums />
+        </ProtectedRoute>
+      ),
+    },
+    {
+      path: '/knowledge',
+      element: (
+        <ProtectedRoute>
+          <Knowledge />
         </ProtectedRoute>
       ),
     },

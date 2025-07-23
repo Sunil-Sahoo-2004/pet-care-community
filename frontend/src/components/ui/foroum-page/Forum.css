@@ -41,6 +41,7 @@
   font-size: var(--font-sm);
   color: var(--color-muted);
   transition: var(--transition-base);
+  margin-bottom: 2px;
 }
 
 .forum-sidebar li:hover,

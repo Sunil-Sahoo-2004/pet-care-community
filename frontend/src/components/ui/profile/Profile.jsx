@@ -4,9 +4,9 @@ import UserDetails from "./UserDetails";
 import PetPreferences from "./PetPreferences";
 import MyPreferences from "./MyPreferences";
 import CommunityActivity from "./CommunityActivity";
-import SavedResources from "./SavedResourses";
 import MyServices from "./MyServices";
 import { jwtDecode } from "jwt-decode";
+import MyArticles from "./MyArticles";
 
 const Profile = () => {
   const rawToken = document.cookie
@@ -39,7 +39,7 @@ const Profile = () => {
         </div>
         <div className="user-activity-details">
           <CommunityActivity userName={userName} />
-          <SavedResources />
+          <MyArticles />
         </div>
       </div>
     </div>

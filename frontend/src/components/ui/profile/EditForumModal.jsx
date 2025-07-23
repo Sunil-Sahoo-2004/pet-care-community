@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaTimes } from 'react-icons/fa';
-import './ForumModal.css';
 
-const EditForumModal = ({ onClose, onSubmit, forum }) => {
+const EditForumModal = ({ forum, onClose, onSubmit }) => {
   const [form, setForm] = useState({
     title: '',
     content: '',
@@ -14,13 +13,17 @@ const EditForumModal = ({ onClose, onSubmit, forum }) => {
       setForm({
         title: forum.title || '',
         content: forum.content || '',
-        tags: forum.tags ? forum.tags.join(', ') : '',
+        tags: forum.tags?.join(', ') || '',
       });
     }
   }, [forum]);
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = (e) => {
@@ -28,44 +31,43 @@ const EditForumModal = ({ onClose, onSubmit, forum }) => {
     const updatedData = {
       title: form.title,
       content: form.content,
-      tags: form.tags.split(',').map((tag) => tag.trim()),
+      tags: form.tags.split(',').map(tag => tag.trim()).filter(Boolean),
     };
-    onSubmit(forum._id, updatedData); // ✅ Pass ID separately
-    onClose();
+    onSubmit(updatedData);
   };
 
   return (
-    <div className="forum-modal-overlay">
-      <div className="forum-modal">
-        <button className="forum-modal-close" onClick={onClose}>
+    <div className="edit-modal-overlay">
+      <div className="edit-modal">
+        <button className="modal-close" onClick={onClose}>
           <FaTimes />
         </button>
         <h3>Edit Forum Post</h3>
-        <form onSubmit={handleSubmit} className="forum-form">
+        <form onSubmit={handleSubmit}>
           <input
             type="text"
             name="title"
-            placeholder="Title"
             value={form.title}
             onChange={handleChange}
+            placeholder="Title"
             required
           />
           <textarea
             name="content"
-            placeholder="Your content..."
             value={form.content}
             onChange={handleChange}
-            rows={4}
+            placeholder="Content"
+            rows="4"
             required
           />
           <input
             type="text"
             name="tags"
-            placeholder="Tags (comma separated)"
             value={form.tags}
             onChange={handleChange}
+            placeholder="Tags (comma-separated)"
           />
-          <button type="submit" className="submit-btn">Update</button>
+          <button type="submit">Update</button>
         </form>
       </div>
     </div>

@@ -4,14 +4,14 @@ import { FaEdit, FaTrash } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import EditForumModal from './EditForumModal';
 
-const CommunityActivity = ({ userName }) => {
+const CommunityActivity = () => {
   const [forums, setForums] = useState([]);
   const [editingForum, setEditingForum] = useState(null);
 
   const fetchForums = async () => {
     try {
-      const res = await getMyForums(userName);
-      setForums(res.data);
+      const res = await getMyForums();
+      setForums(res.data || []);
     } catch (err) {
       toast.error('Failed to fetch your forums', err);
     }
@@ -21,7 +21,7 @@ const CommunityActivity = ({ userName }) => {
     if (window.confirm('Are you sure you want to delete this forum?')) {
       try {
         await deleteForum(id);
-        toast.success('Forum deleted');
+        toast.success('Forum deleted successfully');
         fetchForums();
       } catch (err) {
         toast.error('Failed to delete forum', err);
@@ -40,8 +40,8 @@ const CommunityActivity = ({ userName }) => {
   };
 
   useEffect(() => {
-    if (userName) fetchForums();
-  }, [userName]);
+    fetchForums();
+  }, []);
 
   return (
     <div className="community-activity-section">
@@ -53,11 +53,9 @@ const CommunityActivity = ({ userName }) => {
           forums.map((forum) => (
             <li className="activity-item" key={forum._id}>
               <strong>{forum.title}</strong>
-              <br />
-              {forum.content}
-              <br />
+              <p>{forum.content}</p>
               <small>🗓️ {new Date(forum.createdAt).toLocaleDateString()}</small>
-              <div style={{ marginTop: '0.5rem' }}>
+              <div className="forum-actions">
                 <button className="edit-btn" onClick={() => setEditingForum(forum)}>
                   <FaEdit />
                 </button>
@@ -74,7 +72,10 @@ const CommunityActivity = ({ userName }) => {
         <EditForumModal
           forum={editingForum}
           onClose={() => setEditingForum(null)}
-          onSubmit={handleUpdate}
+          onSubmit={(updatedData) => {
+            handleUpdate(editingForum._id, updatedData);
+            setEditingForum(null);
+          }}
         />
       )}
     </div>

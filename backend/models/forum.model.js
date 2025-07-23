@@ -2,10 +2,14 @@ import mongoose from 'mongoose';
 
 const forumSchema = new mongoose.Schema({
   author: {
-    name: String,
-    userId: {
+    id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
+      required: true,
+    },
+    name: {
+      type: String,
+      required: true,
     },
   },
   title: String,

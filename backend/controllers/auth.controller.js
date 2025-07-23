@@ -157,9 +157,9 @@ const adminLogin = (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false, // use true in production (HTTPS)
-      sameSite: "lax", // or "none" if using cross-site cookies with HTTPS
-      maxAge: 60 * 60 * 1000, // 1 hour
+      secure: false, 
+      sameSite: "lax", 
+      maxAge: 60 * 60 * 1000, 
     });
 
     return res.json({

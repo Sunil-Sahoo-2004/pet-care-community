@@ -1,6 +1,6 @@
 import { ForumModel } from "../models/forum.model.js";
 
-
+// Get all forums
 export const getAllForums = async (req, res) => {
   try {
     const forums = await ForumModel.find().sort({ createdAt: -1 });
@@ -11,12 +11,18 @@ export const getAllForums = async (req, res) => {
   }
 };
 
+// Create forum
 export const createForum = async (req, res) => {
   try {
-    const { author, title, content, tags } = req.body;
+    const { title, content, tags } = req.body;
+    const userId = req.user.id;
+    const userName = req.user.name;
 
     const newForum = new ForumModel({
-      author,
+      author: {
+        id: userId,
+        name: userName,
+      },
       title,
       content,
       tags,
@@ -32,16 +38,18 @@ export const createForum = async (req, res) => {
 };
 
 
+// Get my forums
 export const getMyForums = async (req, res) => {
   try {
-    const userId = req.user._id; 
-    const forums = await ForumModel.find({ 'author.userId': userId }).sort({ createdAt: -1 });
+    const userId = req.user.id;
+    const forums = await ForumModel.find({ 'author.id': userId }).sort({ createdAt: -1 });
     res.status(200).json({ success: true, data: forums });
   } catch (error) {
     console.error('Error fetching user forums:', error);
     res.status(500).json({ success: false, message: 'Internal Server Error' });
   }
 };
+
 
 // Delete forum
 export const deleteForum = async (req, res) => {
@@ -59,26 +67,18 @@ export const deleteForum = async (req, res) => {
 export const updateForum = async (req, res) => {
   try {
     const { id } = req.params;
-
-    if (!id) {
-      return res.status(400).json({ success: false, message: 'Forum ID is required' });
-    }
-
     const { title, content, tags } = req.body;
+    const userId = req.user.id;
 
     if (!title || !content) {
       return res.status(400).json({ success: false, message: 'Title and content are required' });
     }
-
+    // Update the forum
     const updatedForum = await ForumModel.findByIdAndUpdate(
       id,
       { title, content, tags },
       { new: true, runValidators: true }
     );
-
-    if (!updatedForum) {
-      return res.status(404).json({ success: false, message: 'Forum not found' });
-    }
 
     res.status(200).json({ success: true, message: 'Forum updated successfully', data: updatedForum });
   } catch (error) {
@@ -86,3 +86,4 @@ export const updateForum = async (req, res) => {
     res.status(500).json({ success: false, message: 'Internal Server Error' });
   }
 };
+

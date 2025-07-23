@@ -9,6 +9,7 @@ import successAnimation from './Animation - 1751286654114.json'
 import user from './user.png'
 import AdoptionHeader from './Adoption-header.png'
 import delete_icon from './delete.gif'
+import knoladge_header from './knowladge_header.png'
 
 import pet_1 from './pet-1.webp'
 import pet_2 from './pet-2.jpg'
@@ -50,7 +51,8 @@ export const assets = {
     successAnimation,
     user,
     AdoptionHeader,
-    delete_icon
+    delete_icon,
+    knoladge_header
 }
 
 

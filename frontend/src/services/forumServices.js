@@ -20,8 +20,8 @@ export const createForum = async (forumData) => {
   return res.data;
 };
 
-export const getMyForums = async (name) => {
-  const res = await API.get(`/my-forums?name=${name}`);
+export const getMyForums = async () => {
+  const res = await API.get('/my-forums');
   return res.data;
 };
 
