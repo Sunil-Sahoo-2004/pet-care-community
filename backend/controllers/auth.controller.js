@@ -142,9 +142,9 @@ const adminLogin = (req, res) => {
   const { email, password } = req.body;
 
   const adminUser = {
-    name : 'admin',
-    email: 'admin@example.com',
-    password: 'admin@123',
+    name : process.env.ADMIN_NAME,
+    email: process.env.ADMIN_EMAIL,
+    password: process.env.ADMIN_PASS,
     role: 'admin',
   };
 
